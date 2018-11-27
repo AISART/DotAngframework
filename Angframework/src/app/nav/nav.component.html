@@ -1,21 +1,24 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">AngularMaster</a>
+        <a class="navbar-brand" [routerLink]="['/home']">AngularMaster</a>
 
         <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Matches</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/members']">Matches</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Lists</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/lists']">Lists</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Messages</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/products']">Products</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/messages']">Messages</a>
             </li>
         </ul>
     
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
-            <a class="dropdown-toggle text-light" dropdownToggle>
+            <a class="dropdown-toggle text-primary" dropdownToggle>
                 Welcome {{ authService.decodedToken?.unique_name | titlecase }}
             </a>
             
