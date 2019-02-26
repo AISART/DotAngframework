@@ -4,3 +4,19 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+
+.img-thumbnail {
+  margin: 25px;
+  width: 85%;
+  height: 85%;
+}
+
+.card-body {
+  padding: 0 25px;
+}
+
+.card-footer {
+  padding: 10px 15px;
+  background-color: #FFF;
+  border-top: none;
+}
