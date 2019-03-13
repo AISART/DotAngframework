@@ -27,9 +27,11 @@ namespace DotAng.SPA.Migrations
 
                     b.Property<bool>("IsMain");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("PublicId");
 
-                    b.Property<string>("url");
+                    b.Property<string>("Url");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
