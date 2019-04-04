@@ -6,6 +6,10 @@
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
+.member-icons {
+
+}
+
 .img-thumbnail {
   margin: 25px;
   width: 85%;
@@ -34,4 +38,37 @@
 }
 input[type=file] {
   color: transparent;
+}
+
+table {
+    margin-top: 15px;
+}
+
+.img-circle {
+    max-height: 50px;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+.card {
+    border: none;
+}
+
+.chat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted red;
+}
+
+.rounded-circle {
+    height: 50px;
+    width: 50px;
 }
