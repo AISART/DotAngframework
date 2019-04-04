@@ -8,10 +8,14 @@ import { MessagesComponent } from './messages/messages.component';
 import {MemberDetailComponent} from './members/member-detail/member-detail.component';
 import {MemberDetailResolver} from './resolvers/member-detail.resolver';
 import {MemberListResolver} from './resolvers/member-list.resolver';
+import {MembersEditComponent} from './members/members-edit/members-edit.component';
+import {MemberEditResolver} from './resolvers/member-edit.resolver';
+import {PreventUnsavedChanges} from './guards/prevend-unsaved-changes.guard';
+import {ListResolver} from './resolvers/lists.resolver';
+import {MessagesResolver} from './resolvers/messages.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-
     {
         path: '',
         runGuardsAndResolvers: 'always',
@@ -27,12 +31,20 @@ export const appRoutes: Routes = [
                 resolve: {user: MemberDetailResolver}
             },
             {
+                path: 'member/edit',
+                component: MembersEditComponent,
+                resolve: {user: MemberEditResolver},
+                canDeactivate: [PreventUnsavedChanges]
+            },
+            {
                 path: 'messages',
-                component: MessagesComponent
+                component: MessagesComponent,
+                resolve: {messages: MessagesResolver}
             },
             {
                 path: 'lists',
-                component: ListsComponent
+                component: ListsComponent,
+                resolve: {users: ListResolver}
             },
             {
                 path: 'products',
@@ -40,6 +52,5 @@ export const appRoutes: Routes = [
             }
         ]
     },
-
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
