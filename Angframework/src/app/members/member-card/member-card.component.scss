@@ -1,0 +1,52 @@
+.card:hover img{
+      -webkit-transform: (1.2, 1.2);
+      -moz-transform: (1.2, 1.2);
+      -ms-transform: (1.2, 1.2);
+      -o-transform: (1.2, 1.2);
+      transform: (1.2, 1.2);
+      -webkit-transition: prop 500ms;
+      -moz-transition: prop 500ms;
+      -ms-transition: prop 500ms;
+      -o-transition: prop 500ms;
+      transition: prop 500ms;
+      transition-timing-function: ease-out;
+  }
+.card  img {
+    -webkit-transform: (1.0, 1.0);
+    -moz-transform: (1.0, 1.0);
+    -ms-transform: (1.0, 1.0);
+    -o-transform: (1.0, 1.0);
+    transform: (1.0, 1.0);
+    -webkit-transition: prop 500ms;
+    -moz-transition: prop 500ms;
+    -ms-transition: prop 500ms;
+    -o-transition: prop 500ms;
+    transition: prop 500ms;
+    transition-timing-function: ease-out;
+  }
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.member-icons {
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0;
+}
+.card-img-wrapper:hover .member-icons {
+    opacity: 1;
+}
+.animate {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+li.list-inline-item {
+    margin-right: 0.1rem;
+}

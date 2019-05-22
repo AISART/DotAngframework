@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotAng.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
