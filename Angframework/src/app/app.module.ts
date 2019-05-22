@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BsDatepickerModule, BsDropdownModule, ButtonsModule, PaginationModule, TabsModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, BsDropdownModule, ButtonsModule, ModalModule, PaginationModule, TabsModule} from 'ngx-bootstrap';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {AuthGuard} from './guards/auth.guard';
@@ -36,6 +36,11 @@ import {TimeAgoPipe} from 'time-ago-pipe';
 import {ListResolver} from './resolvers/lists.resolver';
 import {MessagesResolver} from './resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './directives/has-role.directive';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -56,7 +61,12 @@ export function tokenGetter() {
         MembersEditComponent,
         PhotoEditorComponent,
         TimeAgoPipe,
-        MemberMessagesComponent
+        MemberMessagesComponent,
+        AdminPanelComponent,
+        HasRoleDirective,
+        PhotoManagementComponent,
+        UserManagementComponent,
+        RolesModalComponent
     ],
     imports: [
         BrowserModule,
@@ -70,6 +80,7 @@ export function tokenGetter() {
         TabsModule.forRoot(),
         ButtonsModule.forRoot(),
         RouterModule.forRoot(appRoutes),
+        ModalModule.forRoot(),
         NgxGalleryModule,
         FileUploadModule,
         JwtModule.forRoot({
@@ -95,6 +106,9 @@ export function tokenGetter() {
     ],
     bootstrap: [
         AppComponent
+    ],
+    entryComponents: [
+        RolesModalComponent
     ]
 })
 export class AppModule {
