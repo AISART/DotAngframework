@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
 using DotAng.API.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace DotAng.API.Models
 {
-    public class User
+    public class User : IdentityUser<int>
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public byte[] PasswordHash{ get; set; }
-        public byte[] PasswordSalt { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string KnownAs{ get; set; }
@@ -25,5 +22,6 @@ namespace DotAng.API.Models
         public ICollection<Like> Likees { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesRecieved { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

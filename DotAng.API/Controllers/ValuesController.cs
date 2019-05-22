@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotAng.SPA.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -22,7 +21,7 @@ namespace DotAng.SPA.Controllers
 
         }
         // GET api/values
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
@@ -32,7 +31,7 @@ namespace DotAng.SPA.Controllers
         }
 
         // GET api/values/5
-        [AllowAnonymous]
+        [Authorize(Roles = "Member")]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetValue(int id)
         {
