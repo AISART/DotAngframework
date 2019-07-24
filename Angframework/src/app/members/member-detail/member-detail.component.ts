@@ -13,7 +13,7 @@ import {AuthService} from '../../services/auth.service';
     styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
-    @ViewChild('memberTabs') memberTabs: TabsetComponent;
+    @ViewChild('memberTabs', { static: true }) memberTabs: TabsetComponent;
 
     user: User;
     galleryOptions: NgxGalleryOptions[];
