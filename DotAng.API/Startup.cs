@@ -124,7 +124,7 @@ namespace DotAng.SPA
             // app.UseHttpsRedirection();
 
             // SEED COMMAND
-            // seeder.SeedUsers();
+            //seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();

@@ -1,19 +1,25 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+!component_translations.exe
 
 # compiled output
 /dist
 /tmp
 /out-tsc
+/wwwroot
+target/
+Cargo.lock
 
 # dependencies
 /node_modules
 
 # IDEs and editors
 /.idea
+/.Dynasource.Web.iml
 .project
 .classpath
 .c9/
 *.launch
+*.iml
 .settings/
 *.sublime-workspace
 
@@ -37,3 +43,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Test reports
+**/reports-tmp
+/.gradle/
+
+junitresults.xml

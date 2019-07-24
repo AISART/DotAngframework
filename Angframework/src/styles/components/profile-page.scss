@@ -1,0 +1,28 @@
+@import "../variables";
+
+.profile {
+    .profile-top {
+        height: 15rem;
+        clear: both;
+        .banner-profile {
+            background-color: map-get($colors, 'dyna-blue');
+            height: 10rem;
+            position: relative;
+            .profile-rounded {
+                display: inline-block;
+                position: absolute;
+                bottom: -5rem;
+                margin: 0 auto;
+                width: 100%;
+                img {
+                    -webkit-border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    border-radius: 100%;
+                    border: 4px solid #fff;
+                    width: 180px;
+                    height: 180px;
+                }
+            }
+        }
+    }
+}
