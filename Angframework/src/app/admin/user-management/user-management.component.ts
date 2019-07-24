@@ -7,8 +7,7 @@ import {RolesModalComponent} from '../roles-modal/roles-modal.component';
 
 @Component({
     selector: 'app-user-management',
-    templateUrl: './user-management.component.html',
-    styleUrls: ['./user-management.component.scss']
+    templateUrl: './user-management.component.html'
 })
 export class UserManagementComponent implements OnInit {
     users: User[];

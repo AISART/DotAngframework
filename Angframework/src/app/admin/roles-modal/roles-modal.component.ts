@@ -4,8 +4,7 @@ import {User} from '../../models/user';
 
 @Component({
     selector: 'app-roles-modal',
-    templateUrl: './roles-modal.component.html',
-    styleUrls: ['./roles-modal.component.scss']
+    templateUrl: './roles-modal.component.html'
 })
 export class RolesModalComponent implements OnInit {
     @Output() updateSelectedRoles = new EventEmitter();
