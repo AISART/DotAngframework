@@ -1,0 +1,92 @@
+header.header-clouds {
+    background-image: url('/assets/images/header-clouds.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: calc(100vh + 0px);
+}
+.homepage-header {
+    background-image: url('/assets/images/header-water-mountains.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: calc(100vh + 0px);
+    position: relative;
+    .header-info {
+        height: calc(100vh - 0px);
+        h1.header-big {
+            font-size: 15rem;
+            font-family: 'Varela Round', sans-serif;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fd484f 0%, #000343 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            opacity: .8;
+            text-align: center;
+        }
+        .header-content {
+            background-color: #FFF;
+            padding: 1rem;
+            opacity: .8;
+            .logo {
+                font: 84px 'Arial Narrow', sans-serif;
+                color: #fd484f;
+                text-transform: uppercase;
+                letter-spacing: -4px;
+            }
+
+            .logo span {
+                position: relative;
+            }
+            .logo span:before,
+            .logo span:after {
+                content: '';
+                position: absolute;
+                border-width: 32px;
+                border-style: solid;
+                border-color: transparent;
+                height: 0;
+                z-index: 10;
+            }
+
+            .logo .word1 {
+                color: #dc006c;
+                margin-right: -38px;
+                transform: rotateY(180deg);
+                display: inline-block;
+                z-index: 10;
+            }
+            .logo .word1:before {
+                right: -4px;
+                top: -9px;
+                border-top-color: rgba(255,255,255,1);
+                border-right-color: rgba(255,255,255,1);
+            }
+            .logo .word1:after {
+                left: 17px;
+                bottom: -15px;
+                border-bottom-color: rgba(255,255,255,1);
+                border-left-color: rgba(255,255,255,1);
+            }
+
+            .logo .word2 {
+                z-index: 0;
+            }
+            .logo .word2:before {
+                left: -4px;
+                top: -6px;
+                border-top-color: rgba(255,255,255,1);
+                border-left-color: rgba(255,255,255,1);
+            }
+            .logo .word2:after {
+                right: -4px;
+                bottom: 4px;
+                border-bottom-color: rgba(255,255,255,1);
+                border-right-color: rgba(255,255,255,1);
+            }
+        }
+    }
+}

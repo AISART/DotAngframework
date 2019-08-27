@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
     registerMode = false;
-
+    registerForm = false;
     constructor(private http: HttpClient) { }
 
     ngOnInit() {

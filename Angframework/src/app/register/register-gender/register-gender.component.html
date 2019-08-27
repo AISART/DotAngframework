@@ -1,0 +1,17 @@
+<form [formGroup]="registerForm">
+	<div class="row">
+		<div class="form-group col-8 d-flex justify-content-between gender-container">
+			<label>
+				<input type="radio" class="option-input radio" value="male" formControlName="gender" checked/>
+				Male
+			</label>
+			<label>
+				<i class="fa fa-venus-mars"></i>
+			</label>
+			<label>
+				<input type="radio" class="option-input radio" value="female" formControlName="gender" />
+				Female
+			</label>
+		</div>
+	</div>
+</form>
