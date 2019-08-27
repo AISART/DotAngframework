@@ -36,7 +36,6 @@ export class MemberMessagesComponent implements OnInit {
             }))
             .subscribe(messages => {
             this.messages = messages;
-                console.log('wat zit hiern', this.messages);
         }, error => {
             this.alertify.error(error);
         });

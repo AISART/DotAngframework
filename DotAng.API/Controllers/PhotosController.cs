@@ -16,7 +16,8 @@ namespace DotAng.API.Controllers
 {
     [Route("api/users/{userId}/photos")]
     [ApiController]
-    public class PhotosController : ControllerBase
+    public class 
+        PhotosController : ControllerBase
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;

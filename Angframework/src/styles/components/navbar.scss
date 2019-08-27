@@ -1,0 +1,17 @@
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+nav.navbar {
+    background-color: #000343;
+    .navbar-brand {
+        color: #ffffff;
+    }
+    a {
+        color: #FFFFFF;
+    }
+    img {
+        max-height: 50px;
+        border: 2px solid #FFF;
+        display: inline;
+    }
+}

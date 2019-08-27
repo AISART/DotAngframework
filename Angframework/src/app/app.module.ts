@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {AuthGuard} from './guards/auth.guard';
 import {JwtModule} from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -41,6 +42,12 @@ import { HasRoleDirective } from './directives/has-role.directive';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { RegisterKnowAsComponent } from './register/register-know-as/register-know-as.component';
+import { RegisterGenderComponent } from './register/register-gender/register-gender.component';
+import { RegisterBirthComponent } from './register/register-birth/register-birth.component';
+import { RegisterCityCountryComponent } from './register/register-city-country/register-city-country.component';
+import { RegisterAccountComponent } from './register/register-account/register-account.component';
+import { SubmitButtonComponent } from './shared/submit-button/submit-button.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -66,10 +73,17 @@ export function tokenGetter() {
         HasRoleDirective,
         PhotoManagementComponent,
         UserManagementComponent,
-        RolesModalComponent
+        RolesModalComponent,
+        RegisterKnowAsComponent,
+        RegisterGenderComponent,
+        RegisterBirthComponent,
+        RegisterCityCountryComponent,
+        RegisterAccountComponent,
+        SubmitButtonComponent
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
