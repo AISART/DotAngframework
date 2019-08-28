@@ -8,6 +8,7 @@ import {appRoutes} from './routes';
 import {AuthGuard} from './guards/auth.guard';
 import {JwtModule} from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -88,6 +89,7 @@ export function tokenGetter() {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MatInputModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,

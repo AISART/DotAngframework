@@ -6,22 +6,33 @@
 				<div class="test" *ngIf="!loginMode; else forgotForm">
 				<h2 class="text-primary">Welcome! Please enter your account details </h2>
 				<hr>
-					<form #loginForm="ngForm"
-					      class="form-inline my-2 my-lg-0"
-					      (ngSubmit)="login()">
+					<form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" autocomplete="off">
+						<div class="container-fluid">
+							<div class="row">
+								<!-- Username -->
+								<mat-form-field class="full-width-field">
+									<input matInput
+									       placeholder="Username"
+									       name="username"
+									       required
+									       autocomplete="new-password"
+									       [(ngModel)]="model.username">
+								</mat-form-field>
 
-						<!-- Username -->
-						<div class="form-group">
-							<input class="form-control mr-sm-2" type="text" name="username" placeholder="Username" required [(ngModel)]="model.username">
+								<!--password-->
+								<mat-form-field class="full-width-field">
+									<input matInput
+									       placeholder="Password"
+									       type="password"
+									       name="password"
+									       required
+									       autocomplete="new-password"
+									       [(ngModel)]="model.password">
+								</mat-form-field>
+							</div>
+							<button [disabled]="!loginForm.valid" class="submit-button" type="submit">Login</button>
+							<button class="submit-button mt-5" (click)="forgotPassword()">Forgot my password</button>
 						</div>
-
-						<!--password-->
-						<div class="form-group">
-							<input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" required [(ngModel)]="model.password">
-						</div>
-
-						<button [disabled]="!loginForm.valid" class="submit-button" type="submit">Login</button>
-						<button class="submit-button mt-5" (click)="forgotPassword()">Forgot my password</button>
 					</form>
 				</div>
 
