@@ -14,16 +14,12 @@ export class RegisterBirthComponent implements OnInit, OnDestroy {
 
     registerForm: FormGroup;
     private subscription: Subscription;
-    bsConfig: Partial<BsDatepickerConfig>;
 
     constructor(private state: StateService<User>,
                 private fb: FormBuilder) {
     }
 
     ngOnInit() {
-        this.bsConfig = {
-            containerClass: 'theme-red'
-        };
         const user = this.state.State || <User>{};
         this.registerForm = this.fb.group({
             dateOfBirth: user.age

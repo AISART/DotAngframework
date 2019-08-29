@@ -9,8 +9,8 @@
 					<span class="word2">ANGULAR</span>
 				</h1>
 			</div>
-			<button class="submit-button mt-5" (click)="registerToggle()">Register</button>
-			<button class="submit-button mt-5" [routerLink]="['/login']">Login</button>
+			<button *ngIf="!loggedIn()" class="submit-button mt-5" (click)="registerToggle()">Register</button>
+			<button *ngIf="!loggedIn()" class="submit-button mt-5" [routerLink]="['/login']">Login</button>
 		</div>
 
 		<ng-template #registerForm>

@@ -22,13 +22,11 @@
 @import 'components/register';
 @import 'components/login';
 @import 'components/button';
+@import 'components/custom-material';
 
 html,
 body {
     height: 100%;
-}
-mat-form-field{
-    width: 100%;
 }
 
 .card:hover img {

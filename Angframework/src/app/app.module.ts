@@ -7,8 +7,9 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {AuthGuard} from './guards/auth.guard';
 import {JwtModule} from '@auth0/angular-jwt';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -51,6 +52,7 @@ import { RegisterAccountComponent } from './register/register-account/register-a
 import { SubmitButtonComponent } from './shared/submit-button/submit-button.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import {MatNativeDateModule} from '@angular/material';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -90,6 +92,8 @@ export function tokenGetter() {
         BrowserModule,
         BrowserAnimationsModule,
         MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
