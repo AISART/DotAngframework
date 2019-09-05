@@ -1,12 +1,12 @@
 <form [formGroup]="registerForm">
 	<!-- Username -->
 	<div class="form-group">
-		<input [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
-		       type="text"
-		       class="form-control"
-		       formControlName="username"
-		       placeholder="Username">
-		<div class="invalid-feedback">Please choose a username</div>
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="Username"
+			       autocomplete="new-password"
+			       formControlName="username">
+		</mat-form-field>
 	</div>
 
 	<!--password-->
@@ -15,6 +15,7 @@
 		       type="password"
 		       class="form-control"
 		       formControlName="password"
+		       autocomplete="new-password"
 		       placeholder="Password">
 		<div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required')
 	                                    && registerForm.get('password').touched">Password is required
@@ -35,6 +36,7 @@
 	                                     && registerForm.hasError('mismatch')}"
 		       type="password"
 		       class="form-control"
+		       autocomplete="new-password"
 		       formControlName="confirmPassword"
 		       placeholder="Confirm Password">
 		<div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword').hasError('required')

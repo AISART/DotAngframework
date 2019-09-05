@@ -1,10 +1,10 @@
-import { Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ListsComponent } from './lists/lists.component';
-import { HomeComponent } from './home/home.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
-import { MessagesComponent } from './messages/messages.component';
+import {Routes} from '@angular/router';
+import {AuthGuard} from './guards/auth.guard';
+import {ProductListComponent} from './product-list/product-list.component';
+import {ListsComponent} from './lists/lists.component';
+import {HomeComponent} from './home/home.component';
+import {MemberListComponent} from './members/member-list/member-list.component';
+import {MessagesComponent} from './messages/messages.component';
 import {MemberDetailComponent} from './members/member-detail/member-detail.component';
 import {MemberDetailResolver} from './resolvers/member-detail.resolver';
 import {MemberListResolver} from './resolvers/member-list.resolver';
@@ -14,9 +14,17 @@ import {PreventUnsavedChanges} from './guards/prevend-unsaved-changes.guard';
 import {ListResolver} from './resolvers/lists.resolver';
 import {MessagesResolver} from './resolvers/messages.resolver';
 import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
+import {LoginComponent} from './login/login.component';
+import {ProductDetailComponent} from './product-list/product-detail/product-detail.component';
+import {ProductListResolver} from './resolvers/product-list.resolver';
+import {ProductDetailResolver} from './resolvers/product-detail.resolver';
 
 export const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    {path: '', component: HomeComponent},
+    {
+        path: 'login',
+        component: LoginComponent
+    },
     {
         path: '',
         runGuardsAndResolvers: 'always',
@@ -26,7 +34,7 @@ export const appRoutes: Routes = [
                 path: 'members',
                 component: MemberListComponent,
                 resolve: {users: MemberListResolver}
-            },            {
+            }, {
                 path: 'members/:id',
                 component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolver}
@@ -49,7 +57,13 @@ export const appRoutes: Routes = [
             },
             {
                 path: 'products',
-                component: ProductListComponent
+                component: ProductListComponent,
+                resolve: {products: ProductListResolver}
+            },
+            {
+                path: 'products/:id',
+                component: ProductDetailComponent,
+                resolve: {product: ProductDetailResolver}
             },
             {
                 path: 'admin',
@@ -58,5 +72,5 @@ export const appRoutes: Routes = [
             }
         ]
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' }
+    {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

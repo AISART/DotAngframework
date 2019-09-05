@@ -1,11 +1,15 @@
 <form [formGroup]="registerForm">
+
 	<div class="form-group">
+		<mat-form-field class="full-width-field">
 		<input [ngClass]="{'is-invalid': registerForm.get('knownAs').errors}"
-		       class="form-control"
-		       value="known as"
-		       placeholder="Known as" formControlName="knownAs">
+		       matInput
+		       placeholder="Known As?"
+		       formControlName="knownAs">
+		</mat-form-field>
 		<div class="invalid-feedback"
-		     *ngIf="registerForm.get('knownAs').touched && registerForm.get('knownAs').hasError('required')">Please fill in, we need youre name
+		     *ngIf="registerForm.get('knownAs').touched && registerForm.get('knownAs').hasError('required')">Known as is
+			required
 		</div>
 	</div>
 </form>

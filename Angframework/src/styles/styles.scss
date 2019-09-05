@@ -5,12 +5,15 @@
 @import '../../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 @import '../../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // FUNCTIONS
 @import 'functions';
 
 // VARIABLES
 @import 'variables';
+
+// GENERAL
+@import 'overlay-spinner';
 
 // COMPONENTS
 @import 'components/home-page';
@@ -18,9 +21,12 @@
 @import 'components/body-background';
 @import 'components/form-inputs';
 @import 'components/profile-page';
+@import 'components/products-overview';
 @import 'components/radiobuttons';
 @import 'components/register';
+@import 'components/login';
 @import 'components/button';
+@import 'components/custom-material';
 
 html,
 body {

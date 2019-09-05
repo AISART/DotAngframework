@@ -14,7 +14,7 @@ namespace DotAng.SPA.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099");
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("DotAng.API.Helpers.Message", b =>
                 {
@@ -68,9 +68,9 @@ namespace DotAng.SPA.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<bool>("IsApproved");
-
                     b.Property<bool>("IsMain");
+
+                    b.Property<int?>("ProductId");
 
                     b.Property<string>("PublicId");
 
@@ -80,9 +80,33 @@ namespace DotAng.SPA.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("DotAng.API.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Add_to_cart_url");
+
+                    b.Property<string>("Availability");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Price");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("DotAng.API.Models.Role", b =>
@@ -299,6 +323,10 @@ namespace DotAng.SPA.Migrations
 
             modelBuilder.Entity("DotAng.API.Models.Photo", b =>
                 {
+                    b.HasOne("DotAng.API.Models.Product")
+                        .WithMany("Photos")
+                        .HasForeignKey("ProductId");
+
                     b.HasOne("DotAng.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")

@@ -7,43 +7,45 @@ import {UserService} from '../../services/user.service';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-members-edit',
-  templateUrl: './members-edit.component.html',
-  styleUrls: ['./members-edit.component.scss']
+    selector: 'app-members-edit',
+    templateUrl: './members-edit.component.html'
 })
 export class MembersEditComponent implements OnInit {
-  @ViewChild('editForm', { static: true }) editForm: NgForm;
-  user: User;
-  photoUrl: string;
-  @HostListener('window:beforeunload', ['$event'])
+    @ViewChild('editForm', {static: true}) editForm: NgForm;
+    user: User;
+    photoUrl: string;
+
+    @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
-    if (this.editForm.dirty) {
-      $event.returnValue = true;
+        if (this.editForm.dirty) {
+            $event.returnValue = true;
+        }
     }
-  }
-  constructor(private route: ActivatedRoute,
-              private alertify: AlertifyService,
-              private userService: UserService,
-              private authService: AuthService) { }
 
-  ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.user = data['user'];
-    });
+    constructor(private route: ActivatedRoute,
+                private alertify: AlertifyService,
+                private userService: UserService,
+                private authService: AuthService) {
+    }
 
-    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
-  }
+    ngOnInit() {
+        this.route.data.subscribe(data => {
+            this.user = data['user'];
+        });
 
-  updateUser() {
-    this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
-      this.alertify.success('Profile updated succesfully');
-      this.editForm.reset(this.user);
-    }, error => {
-      this.alertify.error(error);
-    });
-  }
+        this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    }
 
-  updateMainPhoto(photoUrl) {
-    this.user.photoUrl = photoUrl;
-  }
+    updateUser() {
+        this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
+            this.alertify.success('Profile updated succesfully');
+            this.editForm.reset(this.user);
+        }, error => {
+            this.alertify.error(error);
+        });
+    }
+
+    updateMainPhoto(photoUrl) {
+        this.user.photoUrl = photoUrl;
+    }
 }

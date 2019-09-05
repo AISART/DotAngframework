@@ -5,50 +5,54 @@
 	</div>
 </div>
 <h2 class="text-primary">Please fill with your details</h2>
+<button class="btn btn-default position-absolute register-close" type="button" (click)="cancel()">
+	<i class="fa fa-times"></i>
+</button>
 <hr>
 <ng-container [ngSwitch]="ActiveStep.Index">
 
 	<!-- Selecting gender -->
-	<div class="step" *ngSwitchCase="0">
+	<div class="step mt-4 mb-2" *ngSwitchCase="0">
 		<app-register-gender></app-register-gender>
 	</div>
 
 	<!--Known as-->
-	<div class="step" *ngSwitchCase="1">
+	<div class="step mt-4 mb-2" *ngSwitchCase="1">
 		<app-register-know-as></app-register-know-as>
 	</div>
 
 	<!--date of birth-->
-	<div class="step" *ngSwitchCase="2">
+	<div class="step mt-4 mb-2" *ngSwitchCase="2">
 		<app-register-birth></app-register-birth>
 	</div>
 
 	<!--city and country-->
-	<div class="step" *ngSwitchCase="3">
+	<div class="step mt-4 mb-2" *ngSwitchCase="3">
 		<app-register-city-country></app-register-city-country>
 	</div>
 
 	<!--Username with password-->
-	<div class="step" *ngSwitchCase="4">
+	<div class="step mt-4 mb-2" *ngSwitchCase="4">
 		<app-register-account></app-register-account>
 	</div>
 
 </ng-container>
 
-<div class="btn-group">
-	<div *ngIf="ActiveStepIndex > 0 && ActiveStep.ValidBack && !FinishClicked" class="change-state">
-		<a id="onboarding-button-back" class="submit-button" [tabindex]="0" (click)="Prev()">
-			<i class="fa fa-backward"></i>
-		</a>
-	</div>
 	<app-submit-button  *ngIf="ActiveStepIndex === Steps.length - 1;else next"
 	                    [Valid]="ActiveStep.ValidNext && !FinishClicked"
 	                    [Text]="'Register'"
-	                    (onClick)="Finish()"></app-submit-button>
+	                    (onClick)="Finish()"
+	                    class="w-100"></app-submit-button>
 	<ng-template #next>
 		<app-submit-button [Valid]="ActiveStep.ValidNext"
 		                   [Text]="'Next'"
-		                   (onClick)="Next()"></app-submit-button>
+		                   (onClick)="Next()"
+		                   class="w-100"></app-submit-button>
 	</ng-template>
-	<button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+<div *ngIf="ActiveStepIndex > 0 && ActiveStep.ValidBack && !FinishClicked" class="change-state">
+	<button class="submit-button mt-3"
+	        [tabindex]="0"
+	        (click)="Prev()">
+		One step back please
+	</button>
 </div>

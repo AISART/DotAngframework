@@ -7,17 +7,17 @@
         .step {
             .gender-container {
                 i {
-                    font-size: 2rem;
+                    font-size: 4rem;
                 }
             }
         }
     }
     h2 {
-        color: #fd484f !important;
+        color: #353535 !important;
         font-weight: 700;
     }
     hr {
-        color: #000343;
+        background-color: rgba(#fd484f, .6);
     }
     .step-counter {
         font-size: 20px;

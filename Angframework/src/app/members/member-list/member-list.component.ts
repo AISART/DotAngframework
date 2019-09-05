@@ -7,8 +7,7 @@ import {PaginatedResult, Pagination} from '../../models/pagination';
 
 @Component({
     selector: 'app-member-list',
-    templateUrl: './member-list.component.html',
-    styleUrls: ['./member-list.component.scss']
+    templateUrl: './member-list.component.html'
 })
 export class MemberListComponent implements OnInit {
     users: User[];
@@ -50,11 +49,11 @@ export class MemberListComponent implements OnInit {
 
     loadUsers() {
         this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams)
-                        .subscribe((res: PaginatedResult<User[]>) => {
-            this.users = res.result;
-            this.pagination = res.pagination;
-        }, error => {
-            this.alertify.error(error);
-        });
+            .subscribe((res: PaginatedResult<User[]>) => {
+                this.users = res.result;
+                this.pagination = res.pagination;
+            }, error => {
+                this.alertify.error(error);
+            });
     }
 }

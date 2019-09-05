@@ -7,7 +7,9 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {AuthGuard} from './guards/auth.guard';
 import {JwtModule} from '@auth0/angular-jwt';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -48,6 +50,14 @@ import { RegisterBirthComponent } from './register/register-birth/register-birth
 import { RegisterCityCountryComponent } from './register/register-city-country/register-city-country.component';
 import { RegisterAccountComponent } from './register/register-account/register-account.component';
 import { SubmitButtonComponent } from './shared/submit-button/submit-button.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import {MatNativeDateModule} from '@angular/material';
+import { ProductCardComponent } from './product-list/product-card/product-card.component';
+import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import {ProductListResolver} from './resolvers/product-list.resolver';
+import {ProductDetailResolver} from './resolvers/product-detail.resolver';
+import { ProductManagementComponent } from './admin/product-management/product-management.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -79,11 +89,19 @@ export function tokenGetter() {
         RegisterBirthComponent,
         RegisterCityCountryComponent,
         RegisterAccountComponent,
-        SubmitButtonComponent
+        SubmitButtonComponent,
+        LoginComponent,
+        ForgotPasswordComponent,
+        ProductCardComponent,
+        ProductDetailComponent,
+        ProductManagementComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
@@ -116,7 +134,9 @@ export function tokenGetter() {
         MemberEditResolver,
         PreventUnsavedChanges,
         ListResolver,
-        MessagesResolver
+        MessagesResolver,
+        ProductListResolver,
+        ProductDetailResolver
     ],
     bootstrap: [
         AppComponent
