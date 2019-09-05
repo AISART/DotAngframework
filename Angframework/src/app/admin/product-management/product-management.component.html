@@ -1,0 +1,48 @@
+<form [formGroup]="Form" name="product-create">
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="Product name?"
+			       formControlName="name">
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="Give it a description?"
+			       formControlName="description">
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="What is the url?"
+			       formControlName="url">
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="What is the price?"
+			       formControlName="price">
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="is it available?"
+			       formControlName="availability">
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field class="full-width-field">
+			<input matInput
+			       placeholder="add to cart?"
+			       formControlName="add_to_cart_url">
+		</mat-form-field>
+	</div>
+</form>
+
+<app-submit-button  [Text]="'Add product'"
+                    (onClick)="Finish()"
+                    class="w-25"></app-submit-button>

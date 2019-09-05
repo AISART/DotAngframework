@@ -1,3 +1,28 @@
+button.submit-reg {
+    color: #fd484f;
+    border-radius: 0;
+    border: 3px solid #fd484f !important;
+    padding: 1rem;
+    &:hover {
+        color: #FFF;
+    }
+    &:focus {
+        color: #FFF;
+    }
+}
+button.submit-log {
+    color: #FFF !important;
+    border-radius: 0;
+    border: 3px solid #FFF !important;
+    padding: 1rem;
+    &:hover {
+        color: #FFF !important;
+    }
+    &:focus {
+        color: #fd484f !important;
+    }
+}
+
 button.submit-button {
     color: #fd484f;
     text-decoration: none;
@@ -17,7 +42,7 @@ button.submit-button {
     text-transform:uppercase;
     display:inline-block;
     text-align:center;
-    width: auto;
+    width: 100%;
     font-weight:bold;
     padding:3px 14px;
     border-radius:2px;
@@ -56,5 +81,15 @@ button.submit-button {
             right:0;
             opacity:1;
         }
+    }
+}
+
+button.register-close {
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 1;
+    i {
+        color: #353535;
     }
 }

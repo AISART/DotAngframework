@@ -80,6 +80,12 @@ namespace DotAng.API.Controllers
             return Unauthorized();
         }
 
+        // Forgot Password - JWT
+        public Task<IActionResult> ForgotPassword()
+        {
+           throw new Exception();
+        }
+
         private async Task<string> GenerateJwtToken(User user)
         {
             var claims = new List<Claim>

@@ -1,1 +1,11 @@
-<h1>Products</h1>
+<div class="container mt-3">
+	<div class="mt-3">
+		<h2>Products</h2>
+		<button [routerLink]="['/admin/product/create']"></button>
+	</div>
+	<div class="row">
+		<div *ngFor="let product of products" class="col-6">
+			<app-product-card [product]="product"></app-product-card>
+		</div>
+	</div>
+</div>

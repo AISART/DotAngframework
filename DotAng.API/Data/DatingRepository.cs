@@ -42,6 +42,20 @@ namespace DotAng.API.Data
             return photo;
         }
 
+        public async Task<Product> GetProduct(int id)
+        {
+            var productGet = await _context.Products.Include(product => product.Photos)
+                                           .FirstOrDefaultAsync(u => u.Id == id);
+            return productGet;
+        }
+
+        public async Task<IEnumerable<Product>> GetProducts()
+        {
+            var productsGet = await _context.Products.Include(products => products.Photos).ToListAsync();
+
+            return productsGet;
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.Include(p => p.Photos)

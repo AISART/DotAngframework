@@ -53,6 +53,11 @@ import { SubmitButtonComponent } from './shared/submit-button/submit-button.comp
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import {MatNativeDateModule} from '@angular/material';
+import { ProductCardComponent } from './product-list/product-card/product-card.component';
+import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import {ProductListResolver} from './resolvers/product-list.resolver';
+import {ProductDetailResolver} from './resolvers/product-detail.resolver';
+import { ProductManagementComponent } from './admin/product-management/product-management.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -86,7 +91,10 @@ export function tokenGetter() {
         RegisterAccountComponent,
         SubmitButtonComponent,
         LoginComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        ProductCardComponent,
+        ProductDetailComponent,
+        ProductManagementComponent
     ],
     imports: [
         BrowserModule,
@@ -126,7 +134,9 @@ export function tokenGetter() {
         MemberEditResolver,
         PreventUnsavedChanges,
         ListResolver,
-        MessagesResolver
+        MessagesResolver,
+        ProductListResolver,
+        ProductDetailResolver
     ],
     bootstrap: [
         AppComponent

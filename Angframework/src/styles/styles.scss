@@ -12,12 +12,16 @@
 // VARIABLES
 @import 'variables';
 
+// GENERAL
+@import 'overlay-spinner';
+
 // COMPONENTS
 @import 'components/home-page';
 @import 'components/navbar';
 @import 'components/body-background';
 @import 'components/form-inputs';
 @import 'components/profile-page';
+@import 'components/products-overview';
 @import 'components/radiobuttons';
 @import 'components/register';
 @import 'components/login';

@@ -9,8 +9,7 @@ import {AuthService} from '../../services/auth.service';
 
 @Component({
     selector: 'app-member-detail',
-    templateUrl: './member-detail.component.html',
-    styleUrls: ['./member-detail.component.scss']
+    templateUrl: './member-detail.component.html'
 })
 export class MemberDetailComponent implements OnInit {
     @ViewChild('memberTabs', { static: true }) memberTabs: TabsetComponent;
