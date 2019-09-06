@@ -3,8 +3,10 @@
         text-align: center;
     }
     .product-image-container{
-        .product-image-container {
-
+        .product-image {
+            width: 100%;
+            -webkit-background-size: cover;
+            background-size: cover;
         }
     }
     .product-content-container {

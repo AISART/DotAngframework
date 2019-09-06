@@ -4,7 +4,7 @@
 	</div>
 	<div class="row">
 		<div class="product-image-container col-6">
-			<!--		<img class="product-image" src="{{product.url || '../../../assets/user.png'}}" alt="{{product.knownAs}}">-->
+					<img class="product-image" src="{{product.url || '../../../assets/user.png'}}" alt="{{product.knownAs}}">
 			<ul class="list-inline member-icons animate text-center">
 				<li class="list-inline-item">
 					<button class="btn btn-primary btn-sm" [routerLink]="['/products/', product.id]">
@@ -32,6 +32,8 @@
 			<p class="product-description text-muted">
 				{{product.description}}
 			</p>
+			<app-submit-button [Text]="'Add to cart'">
+			</app-submit-button>
 		</div>
 	</div>
 </div>
