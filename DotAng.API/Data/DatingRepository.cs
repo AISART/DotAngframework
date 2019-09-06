@@ -55,6 +55,13 @@ namespace DotAng.API.Data
 
             return productsGet;
         }
+        
+        public async Task<IEnumerable<Product>> CreateProduct()
+        {
+            var productsPost = await _context.Products.Include(products => products.Photos).ToListAsync();
+
+            return productsPost;
+        }
 
         public async Task<User> GetUser(int id)
         {
@@ -125,7 +132,7 @@ namespace DotAng.API.Data
             }
         }
 
-        public async  Task<bool> SaveAll()
+        public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
         }

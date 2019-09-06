@@ -41,8 +41,8 @@
 			       formControlName="add_to_cart_url">
 		</mat-form-field>
 	</div>
+	<app-submit-button  [Text]="'Add product'"
+	                    (click)="Finish()"
+	                    class="w-25"></app-submit-button>
 </form>
 
-<app-submit-button  [Text]="'Add product'"
-                    (onClick)="Finish()"
-                    class="w-25"></app-submit-button>

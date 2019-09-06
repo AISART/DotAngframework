@@ -41,19 +41,12 @@ namespace DotAng.API.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateProduct(ProductsForCreationDto productsForCreationDto)
+        public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
-            var product = _mapper.Map<Product>(productsForCreationDto);
-
             _repo.Add(product);
+            await _repo.SaveAll();
 
-            if (await _repo.SaveAll())
-            {
-                var productToReturn = _mapper.Map<ProductsForCreationDto>(product);
-                return CreatedAtRoute("GetMessage", new {id = product.Id}, productToReturn);
-            }
-
-            throw new Exception("Creating the message failed on save");
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id}, product);
         }
     }
 }
