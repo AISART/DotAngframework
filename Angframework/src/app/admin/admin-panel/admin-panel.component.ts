@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html'
+    selector: 'app-admin-panel',
+    templateUrl: './admin-panel.component.html'
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
