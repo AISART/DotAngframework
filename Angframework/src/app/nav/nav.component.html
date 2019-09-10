@@ -19,7 +19,7 @@
 		        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
 	        </li>
         </ul>
-    
+
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
           <span class="mr-2">
             <img class="rounded" src="{{ photoUrl || '../../assets/user.png' }}" alt="">
@@ -27,7 +27,7 @@
             <a class="dropdown-toggle text-primary" dropdownToggle>
                 Hi {{ authService.decodedToken?.unique_name | titlecase }}
             </a>
-            
+
             <div class="dropdown-menu" *dropdownMenu>
                 <a class="dropdown-item" [routerLink]="['/member/edit']">
                   <i class="fa fa-user"></i> Edit Profile

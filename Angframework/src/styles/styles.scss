@@ -8,6 +8,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // FUNCTIONS
 @import 'functions';
+// MIXINS
+@import 'mixins';
 // VARIABLES
 @import 'variables';
 // GENERAL
@@ -15,6 +17,8 @@
 // COMPONENTS
 @import 'components/home-page';
 @import 'components/navbar';
+@import 'components/side-bar';
+@import 'components/admin/admin-panel';
 @import 'components/body-background';
 @import 'components/form-inputs';
 @import 'components/profile-page';
