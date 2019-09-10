@@ -8,13 +8,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // FUNCTIONS
 @import 'functions';
-
 // VARIABLES
 @import 'variables';
-
 // GENERAL
 @import 'overlay-spinner';
-
 // COMPONENTS
 @import 'components/home-page';
 @import 'components/navbar';
@@ -72,33 +69,35 @@ body {
 }
 
 .img-thumbnail {
-  margin: 25px;
-  width: 85%;
-  height: 85%;
+    margin: 25px;
+    width: 85%;
+    height: 85%;
 }
 
 .card-body {
-  padding: 0 25px;
+    padding: 0 25px;
 }
 
 .card-footer {
-  padding: 10px 15px;
-  background-color: #FFF;
-  border-top: none;
+    padding: 10px 15px;
+    background-color: #FFF;
+    border-top: none;
 }
+
 .photos {
-  img.img-thumbnail {
-    height: 100px;
-    min-width: 100px !important;
-    margin-bottom: 2px;
-  }
+    img.img-thumbnail {
+        height: 100px;
+        min-width: 100px !important;
+        margin-bottom: 2px;
+    }
 }
 
 .nv-file-over {
-  border: dotted 3px red;
+    border: dotted 3px red;
 }
+
 input[type=file] {
-  color: transparent;
+    color: transparent;
 }
 
 table {
@@ -133,12 +132,15 @@ td {
     height: 50px;
     width: 50px;
 }
+
 .z-index-10 {
     z-index: 10;
 }
+
 .z-index-9 {
     z-index: 9;
 }
+
 .z-index-8 {
     z-index: 8;
 }

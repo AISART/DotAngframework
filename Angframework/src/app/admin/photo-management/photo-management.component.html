@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="photos.length else noPhotos">
 	<div *ngFor="let photo of photos" class="col-sm-2">
 		<img src="{{photo.url}}" alt="{{photo.username}}" class="img-thumbnail p-1">
 
@@ -8,4 +8,9 @@
 		</div>
 	</div>
 </div>
+
+<ng-template class="row" #noPhotos>
+	<i class="fa fa-check"></i>
+	there are no photo's to check
+</ng-template>
 

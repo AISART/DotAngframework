@@ -15,7 +15,6 @@ export class SubmitButtonComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        console.log('yo');
     }
 
     /**
@@ -25,8 +24,6 @@ export class SubmitButtonComponent implements OnInit, OnChanges {
         if (Defined(changes['Valid']) && Defined(changes['Valid'].currentValue)) {
             this.Valid = changes['Valid'].currentValue;
         }
-
-        console.log('ngonchange');
     }
 
     /**

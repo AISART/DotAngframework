@@ -38,26 +38,27 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import {ListResolver} from './resolvers/lists.resolver';
 import {MessagesResolver} from './resolvers/messages.resolver';
-import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { HasRoleDirective } from './directives/has-role.directive';
-import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
-import { UserManagementComponent } from './admin/user-management/user-management.component';
-import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
-import { RegisterKnowAsComponent } from './register/register-know-as/register-know-as.component';
-import { RegisterGenderComponent } from './register/register-gender/register-gender.component';
-import { RegisterBirthComponent } from './register/register-birth/register-birth.component';
-import { RegisterCityCountryComponent } from './register/register-city-country/register-city-country.component';
-import { RegisterAccountComponent } from './register/register-account/register-account.component';
-import { SubmitButtonComponent } from './shared/submit-button/submit-button.component';
-import { LoginComponent } from './login/login.component';
-import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import {MemberMessagesComponent} from './members/member-messages/member-messages.component';
+import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
+import {HasRoleDirective} from './directives/has-role.directive';
+import {PhotoManagementComponent} from './admin/photo-management/photo-management.component';
+import {UserManagementComponent} from './admin/user-management/user-management.component';
+import {RolesModalComponent} from './admin/roles-modal/roles-modal.component';
+import {RegisterKnowAsComponent} from './register/register-know-as/register-know-as.component';
+import {RegisterGenderComponent} from './register/register-gender/register-gender.component';
+import {RegisterBirthComponent} from './register/register-birth/register-birth.component';
+import {RegisterCityCountryComponent} from './register/register-city-country/register-city-country.component';
+import {RegisterAccountComponent} from './register/register-account/register-account.component';
+import {SubmitButtonComponent} from './shared/submit-button/submit-button.component';
+import {LoginComponent} from './login/login.component';
+import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.component';
 import {MatNativeDateModule} from '@angular/material';
-import { ProductCardComponent } from './product-list/product-card/product-card.component';
-import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import {ProductCardComponent} from './product-list/product-card/product-card.component';
+import {ProductDetailComponent} from './product-list/product-detail/product-detail.component';
 import {ProductListResolver} from './resolvers/product-list.resolver';
 import {ProductDetailResolver} from './resolvers/product-detail.resolver';
-import { ProductManagementComponent } from './admin/product-management/product-management.component';
+import {ProductManagementComponent} from './admin/product-management/product-management.component';
+import {NgxCaptchaModule} from 'ngx-captcha';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -115,6 +116,7 @@ export function tokenGetter() {
         ModalModule.forRoot(),
         NgxGalleryModule,
         FileUploadModule,
+        NgxCaptchaModule,
         JwtModule.forRoot({
             config: {
                 tokenGetter: tokenGetter,

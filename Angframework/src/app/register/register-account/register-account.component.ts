@@ -23,7 +23,8 @@ export class RegisterAccountComponent implements OnInit, OnDestroy {
         this.registerForm = this.fb.group({
             username: user.userName,
             password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
-            confirmPassword: ['', Validators.required]
+            confirmPassword: ['', Validators.required],
+            recaptcha: ['', Validators.required]
         }, {validator: this.passwordMatchValidator});
 
         this.state.ActiveStep.value.SetForm(this.registerForm.value);

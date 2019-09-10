@@ -48,6 +48,14 @@
 	</div>
 
 	<div class="form-group">
+		<ngx-recaptcha2
+				[siteKey]="'6Ldkl7cUAAAAAKRd1Im8tGCY0-v8edhkpNFAi1BR'"
+				[theme]="'dark'"
+				formControlName="recaptcha">
+		</ngx-recaptcha2>
+	</div>
+
+	<div class="form-group">
 		<label>
 			<input type="checkbox" class="option-input checkbox"/>
 			Please accept our <a href="#">Terms & Conditions</a>
