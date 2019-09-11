@@ -60,6 +60,7 @@ import {ProductDetailResolver} from './resolvers/product-detail.resolver';
 import {ProductManagementComponent} from './admin/product-management/product-management.component';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import { NavbarComponent } from './admin/navbar/navbar.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -97,7 +98,8 @@ export function tokenGetter() {
         ProductCardComponent,
         ProductDetailComponent,
         ProductManagementComponent,
-        NavbarComponent
+        NavbarComponent,
+        AdminDashboardComponent
     ],
     imports: [
         BrowserModule,

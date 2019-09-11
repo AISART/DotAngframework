@@ -18,6 +18,10 @@ import {LoginComponent} from './login/login.component';
 import {ProductDetailComponent} from './product-list/product-detail/product-detail.component';
 import {ProductListResolver} from './resolvers/product-list.resolver';
 import {ProductDetailResolver} from './resolvers/product-detail.resolver';
+import {ProductManagementComponent} from './admin/product-management/product-management.component';
+import {PhotoManagementComponent} from './admin/photo-management/photo-management.component';
+import {UserManagementComponent} from './admin/user-management/user-management.component';
+import {AdminDashboardComponent} from './admin/admin-dashboard/admin-dashboard.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -68,9 +72,27 @@ export const appRoutes: Routes = [
             {
                 path: 'admin',
                 component: AdminPanelComponent,
-                data: {roles: ['Admin', 'Moderator']}
+                data: {roles: ['Admin', 'Moderator']},
+                children: [
+                    {
+                        path: 'dashboard',
+                        component: AdminDashboardComponent
+                    },
+                    {
+                        path: 'product-management',
+                        component: ProductManagementComponent
+                    },
+                    {
+                        path: 'photo-management',
+                        component: PhotoManagementComponent
+                    },
+                    {
+                        path: 'user-management',
+                        component: UserManagementComponent
+                    }
+                ]
             }
         ]
     },
-    {path: '**', redirectTo: '', pathMatch: 'full'}
+    {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

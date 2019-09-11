@@ -1,4 +1,4 @@
-<nav class="navbar z-index-10 navbar-expand-md" *ngIf="loggedIn()">
+<nav class="navbar fixed-top z-index-10 navbar-expand-md" *ngIf="loggedIn()">
     <div class="container">
         <a class="navbar-brand" [routerLink]="['/home']">AngularMaster</a>
 
@@ -16,7 +16,7 @@
                 <a class="nav-link" [routerLink]="['/messages']">Messages</a>
             </li>
 	        <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active">
-		        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+		        <a class="nav-link" [routerLink]="['/admin/dashboard']">Admin</a>
 	        </li>
         </ul>
 
