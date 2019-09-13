@@ -1,0 +1,132 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Product Management</h4>
+				<p class="category">Here you can see all the products</p>
+			</div>
+			<div class="content table-responsive table-full-width">
+				<table class="table table-hover table-striped">
+					<thead>
+					<tr>
+						<th>Product ID</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr *ngFor="let product of products">
+						<td>{{product.id}}</td>
+						<td>{{product.name}}</td>
+						<td>{{product.price}}</td>
+						<td>
+							<button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Products</h4>
+			</div>
+			<div class="content">
+				<form [formGroup]="Form" name="product-create">
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="Product name?"
+							       formControlName="name"
+							       [value]="productname"
+							       (input)="productname = $event.target.value">
+						</mat-form-field>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="Give it a description?"
+							       formControlName="description"
+							       [value]="description"
+							       (input)="description = $event.target.value">
+						</mat-form-field>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="What is the url?"
+							       formControlName="url"
+							       [value]="websiteurl"
+							       (input)="websiteurl = $event.target.value">
+						</mat-form-field>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="What is the price?"
+							       formControlName="price"
+							       [value]="productprice"
+							       (input)="productprice = $event.target.value">
+						</mat-form-field>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="is it available?"
+							       formControlName="availability"
+							       [value]="productavailable"
+							       (input)="productavailable = $event.target.value">
+						</mat-form-field>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="full-width-field">
+							<input matInput
+							       placeholder="add to cart?"
+							       formControlName="add_to_cart_url"
+							       [value]="addtocart"
+							       (input)="addtocart = $event.target.value">
+						</mat-form-field>
+					</div>
+					<app-submit-button  [Text]="'Add product'"
+					                    (click)="Finish()"
+					                    class="w-25"></app-submit-button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Example product</h4>
+				<p class="category">This is how it looks like when you add that product</p>
+			</div>
+			<div class="content">
+				<div class="product-label text-center">
+					<i class="fas fa-smile"></i> new
+				</div>
+				<div class="row">
+					<div class="col-6" style="width: 100%">
+						<img src="../../../../assets/images/example_product.png" alt="" style="width:100%">
+					</div>
+					<div class="col-6">
+						<h2 class="product-title mb-1 w-100">
+							<b>{{ productname }}</b>
+						</h2>
+						<div class="product-price mb-1 w-100">
+							€ {{productprice}} <span class="strike">€ 1.19</span>
+						</div>
+						<app-submit-button [Text]="'Add to cart'"></app-submit-button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -18,7 +18,7 @@ export class ProductListResolver implements Resolve<Product[]> {
         return this.productService.GetProducts().pipe(
             catchError(error => {
                 this.alerify.error('Problem retrieving data');
-                this.router.navigate(['/home']);
+                this.router.navigate(['/products']);
                 return of(null);
             })
         );

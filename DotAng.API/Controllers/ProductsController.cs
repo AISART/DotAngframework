@@ -48,5 +48,21 @@ namespace DotAng.API.Controllers
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id}, product);
         }
+
+        //PATCH
+
+        //DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var getProductId = await _repo.GetProduct(id);
+             _repo.Delete(getProductId);
+            
+            if (await _repo.SaveAll())
+                return NoContent();
+            
+            throw new Exception("Error deleting the product");
+                
+        }
     }
 }

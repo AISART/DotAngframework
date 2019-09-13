@@ -10,9 +10,7 @@
         overflow: auto;
         width: 260px;
         z-index: 4;
-
         padding-bottom: 75px;
-
         .dropdown .dropdown-backdrop {
             display: none !important;
         }
@@ -77,13 +75,9 @@
     }
 
     .logo-img {
-        width: 30px;
-        display: inline-block;
-        max-height: 30px;
         margin-right: 10px;
-
         img {
-            width: 35px;
+            width: 150px;
             top: 11px;
             position: absolute;
         }
@@ -105,10 +99,9 @@
     }
 
     .nav {
-        margin-top: 20px;
-        float: none;
-
         li {
+            width: 100%;
+            max-width: 250px;
             > a {
                 color: #FFF;
                 margin: 5px 15px;
@@ -175,7 +168,7 @@
     .logo {
         padding: 2rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
+        background-color: rgba(0,0,0,.3);
         p {
             float: left;
             font-size: 20px;
@@ -224,7 +217,7 @@
     }
 
     &:before {
-        opacity: .33;
+        opacity: .1;
         background: #000000;
     }
 

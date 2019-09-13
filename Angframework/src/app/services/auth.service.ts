@@ -52,9 +52,7 @@ export class AuthService {
         let isMatch = false;
         const userRoles = this.decodedToken.role as Array<string>;
         allowedRoles.forEach(element => {
-            console.log('even de role bekijken: ', element);
             if (userRoles.includes(element)) {
-                console.log('element after includes, ', element);
                 isMatch = true;
                 return;
             }

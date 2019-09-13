@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CanDeactivate} from '@angular/router';
-import {MembersEditComponent} from '../members/members-edit/members-edit.component';
+import {MembersEditComponent} from '../modules/portal/members/members-edit/members-edit.component';
 
 @Injectable()
 export class PreventUnsavedChanges implements CanDeactivate<MembersEditComponent> {
