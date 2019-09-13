@@ -8,6 +8,8 @@ import {ProductManagementComponent} from './product-management/product-managemen
 import {PhotoManagementComponent} from './photo-management/photo-management.component';
 import {UserManagementComponent} from './user-management/user-management.component';
 import {ProductListResolver} from '../../resolvers/product-list.resolver';
+import {ProductEditComponent} from './product-edit/product-edit.component';
+import {ProductDetailResolver} from '../../resolvers/product-detail.resolver';
 
 const ROUTES: Routes = [
     {path: '', redirectTo: 'admin/dashboard'},
@@ -22,7 +24,12 @@ const ROUTES: Routes = [
                 {
                     path: 'product-management',
                     component: ProductManagementComponent,
-                    resolve: {products: ProductListResolver}
+                    resolve: {products: ProductListResolver},
+                },
+                {
+                    path: 'product-management/:id',
+                    component: ProductEditComponent,
+                    resolve: {products: ProductDetailResolver}
                 },
                 {
                     path: 'photo-management',

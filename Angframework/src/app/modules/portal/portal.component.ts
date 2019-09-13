@@ -9,7 +9,9 @@ export class PortalComponent implements OnInit {
 
     constructor(private authService: AuthService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        document.getElementsByTagName('body')[0].classList.remove('perfect-scrollbar-on');
+    }
 
     loggedIn() {
         return this.authService.loggedIn();

@@ -12,7 +12,8 @@
 						<th>Product ID</th>
 						<th>Name</th>
 						<th>Price</th>
-						<th></th>
+						<th>Update</th>
+						<th>Delete</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -20,6 +21,9 @@
 						<td>{{product.id}}</td>
 						<td>{{product.name}}</td>
 						<td>{{product.price}}</td>
+						<td>
+							<a class="btn btn-info" [routerLink]="['/admin/product-management/', product.id]">Update</a>
+						</td>
 						<td>
 							<button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
 						</td>

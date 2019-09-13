@@ -50,6 +50,17 @@ export class UserManagementComponent implements OnInit {
         });
     }
 
+    DeleteUser(id: number) {
+        this.alertify.confirm('Are you sure you want to delete this user?', () => {
+            this.adminService.deleteUser(id).subscribe(() => {
+                this.users.splice(this.users.findIndex(m => m.id === id), 1);
+                this.alertify.success('This user has been deleted');
+            }, error => {
+                this.alertify.error('Failed to the user');
+            });
+        });
+    }
+
     private getRolesArray(user) {
         const roles = [];
         const userRoles = user.roles;

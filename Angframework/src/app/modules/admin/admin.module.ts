@@ -10,6 +10,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {SharedCoreModule} from '../../core/modules/shared-core.module';
 import {BsDatepickerModule, BsDropdownModule, ButtonsModule, ModalModule, PaginationModule, TabsModule} from 'ngx-bootstrap';
 import {AdminDashboardComponent} from './admin-dashboard.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import {AdminDashboardComponent} from './admin-dashboard.component';
         PhotoManagementComponent,
         ProductManagementComponent,
         RolesModalComponent,
-        UserManagementComponent
+        UserManagementComponent,
+        ProductEditComponent
     ],
     entryComponents: [
         RolesModalComponent

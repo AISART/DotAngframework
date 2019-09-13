@@ -9,9 +9,11 @@ import {NgxGalleryModule} from 'ngx-gallery';
 import {FileUploadModule} from 'ng2-file-upload';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {HasRoleDirective} from '../../directives/has-role.directive';
+import {TruncatePipe} from '../../libs/pipes/truncate.pipe';
 
 const components = [
     HasRoleDirective,
+    TruncatePipe
 ];
 
 @NgModule({

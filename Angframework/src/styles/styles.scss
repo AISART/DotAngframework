@@ -34,10 +34,6 @@
 @import 'components/custom-material';
 
 *{font-family: 'Muli', sans-serif;}
-html,
-body {
-    height: 100%;
-}
 
 .card:hover img {
     transform: scale(1.2, 1.2);

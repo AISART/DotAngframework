@@ -20,7 +20,7 @@
 						    <li>
 							    <a class="nav-link" [routerLink]="['/messages']">Messages</a>
 						    </li>
-						    <li>
+						    <li *appHasRole="['Admin', 'Moderator']">
 							    <a class="nav-link" [routerLink]="['/admin/dashboard']">Admin</a>
 						    </li>
 						    <li>
@@ -84,22 +84,28 @@
 								</div>
 								<a class="text-uppercase">My Account</a>
 								<ul class="custom-menu" *dropdownMenu>
-									<li class="custom-menu-item"><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+									<li class="custom-menu-item">
+										<a [routerLink]="['/member/edit']">
+											<i class="fa fa-user-o"></i> My Account
+										</a>
+									</li>
 									<li class="custom-menu-item"><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
 									<li class="custom-menu-item"><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
 									<li class="custom-menu-item"><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
 									<li class="custom-menu-item"><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-									<li class="custom-menu-item"><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+									<li class="custom-menu-item">
+										<a (click)="logOut()"><i class="fa fa-user-plus"></i> Logout</a>
+									</li>
 								</ul>
 							</div>
-							<a href="#" class="text-uppercase">Hi {{ authService.decodedToken?.unique_name | titlecase }}</a>
+							<a href="#" class="text-uppercase" >Hi {{ authService.decodedToken?.unique_name | titlecase | truncate : 8 }}</a>
 						</li>
 
 
 						<li class="header-cart dropdown default-dropdown" dropdown>
 							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" dropdownToggle>
 								<div class="header-btns-icon">
-									<img class="rounded" src="http://www.pngmart.com/files/7/Cart-PNG-Clipart.png" alt="">
+									<img class="rounded" src="https://www.pinclipart.com/picdir/middle/213-2134500_shopping-cart-logo-png-clipart.png" alt="">
 									<span class="qty">2</span>
 								</div>
 								<strong class="text-uppercase">My Cart:</strong>

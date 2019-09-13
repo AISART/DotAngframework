@@ -103,5 +103,17 @@ namespace DotAng.API.Controllers
             return BadRequest("Failed to like user");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var userFromRepo = await _repo.GetUser(id, true);
+            _repo.Delete(userFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Deleting user {id} failed");
+        }
+
     }
 }

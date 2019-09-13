@@ -44,7 +44,7 @@ export class ProductManagementComponent implements OnInit {
     }
 
     deleteProduct(id: number) {
-        this.alertify.confirm('Are you sure you want to delete this message', () => {
+        this.alertify.confirm('Are you sure you want to delete this product?', () => {
             this.productService.DeleteProduct(id).subscribe(() => {
                 this.products.splice(this.products.findIndex(m => m.id === id), 1);
                 this.alertify.success('This product has been deleted');
