@@ -19,4 +19,20 @@ export class AdminService {
     updateUserRoles(user: User, roles: {}) {
         return this.http.post(this.baseUrl + 'admin/editRoles/' + user.userName, roles);
     }
+
+    deleteUser(id: number) {
+        return this.http.delete(this.baseUrl + 'users/' + id);
+    }
+
+    getPhotosForApproval() {
+        return this.http.get(this.baseUrl + 'admin/photosForModeration');
+    }
+
+    approvePhoto(photoId) {
+        return this.http.post(this.baseUrl + 'admin/approvePhoto/' + photoId, {});
+    }
+
+    rejectPhoto(photoId) {
+        return this.http.post(this.baseUrl + 'admin/rejectPhoto/' + photoId, {});
+    }
 }

@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">User Management</h4>
+				<p class="category">Here you can change the roles per user</p>
+			</div>
+			<div class="content table-responsive table-full-width">
+				<table class="table table-hover table-striped">
+					<thead>
+					<tr>
+						<th>User ID</th>
+						<th>Username</th>
+						<th>Active roles</th>
+						<th></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr *ngFor="let user of users">
+						<td>{{user.id}}</td>
+						<td>{{user.userName}}</td>
+						<td>{{user.roles}}</td>
+						<td>
+							<button (click)="editRolesModal(user)" class="btn btn-info">Edit Roles</button>
+						</td>
+						<td>
+							<button class="btn btn-danger" (click)="DeleteUser(user.id)">Delete</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -68,9 +68,11 @@ namespace DotAng.SPA.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("IsApproved");
+
                     b.Property<bool>("IsMain");
 
-                    b.Property<int?>("ProductId");
+                    b.Property<long?>("ProductId");
 
                     b.Property<string>("PublicId");
 
@@ -89,7 +91,7 @@ namespace DotAng.SPA.Migrations
 
             modelBuilder.Entity("DotAng.API.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Add_to_cart_url");

@@ -19,4 +19,13 @@ export class ProductService {
     GetProduct(id: number) {
         return this.http.get<Product[]>(this.baseUrl + 'products/' + id);
     }
+
+    CreateProduct(product: Product) {
+        const url = this.baseUrl + 'products/create';
+        return this.http.post(url, {...product});
+    }
+
+    DeleteProduct(id: number) {
+        return this.http.delete(this.baseUrl + 'products/' + id);
+    }
 }

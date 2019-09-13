@@ -1,0 +1,50 @@
+<div class="header position-relative vh-100">
+	<header class="container-fluid position-absolute header-clouds z-index-8"></header>
+	<div class="container-fluid position-absolute homepage-header z-index-9">
+		<div class="login container d-flex justify-content-center align-items-center">
+			<div class="login-container col-6">
+				<div class="test" *ngIf="!loginMode; else forgotForm">
+				<h2 class="text-primary">Welcome! Please enter your account details </h2>
+				<hr>
+					<button class="btn btn-default position-absolute register-close" type="button" [routerLink]="['/authentication']">
+						<i class="fa fa-times"></i>
+					</button>
+					<form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" autocomplete="off">
+						<div class="container-fluid">
+							<div class="row">
+								<!-- Username -->
+								<mat-form-field class="full-width-field">
+									<input matInput
+									       placeholder="Username"
+									       name="username"
+									       required
+									       autocomplete="new-password"
+									       [(ngModel)]="model.username">
+								</mat-form-field>
+
+								<!--password-->
+								<mat-form-field class="full-width-field">
+									<input matInput
+									       placeholder="Password"
+									       type="password"
+									       name="password"
+									       required
+									       autocomplete="new-password"
+									       [(ngModel)]="model.password">
+								</mat-form-field>
+							</div>
+							<div class="row">
+								<button [disabled]="!loginForm.valid" class="submit-button" type="submit">Login</button>
+								<button class="submit-button mt-3" (click)="forgotPassword()">Forgot my password</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<ng-template #forgotForm>
+					<app-forgot-password (cancelForgot)="cancelForgotMode($event)"></app-forgot-password>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
