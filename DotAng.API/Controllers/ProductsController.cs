@@ -50,6 +50,18 @@ namespace DotAng.API.Controllers
         }
 
         //PATCH
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductForUpdateDto productForUpdateDto)
+        {
+            var productFromRepo = await _repo.GetProduct(id);
+
+            _mapper.Map(productForUpdateDto, productFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception("Updating product {id} failed on save");
+        }
 
         //DELETE
         [HttpDelete("{id}")]

@@ -21,6 +21,11 @@ namespace DotAng.API.Data
             _context.Add(entity);
         }
 
+        public void Patch<T>(T entity) where T : class
+        {
+            _context.Update(entity);
+        }
+
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
@@ -62,6 +67,13 @@ namespace DotAng.API.Data
             var productsPost = await _context.Products.Include(products => products.Photos).ToListAsync();
 
             return productsPost;
+        }
+
+        public async Task<IEnumerable<Product>> UpdateProduct()
+        {
+            var productsUpdate = await _context.Products.Include(products => products.Photos).ToListAsync();
+
+            return productsUpdate;
         }
 
         public async Task<User> GetUser(int id, bool isCurrentUser)

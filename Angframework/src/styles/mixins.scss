@@ -183,7 +183,32 @@
         75% {-moz-transform: rotate(-5deg);}
         100% {bottom: 0px;-moz-transform: rotate(0);}
     }
-
 }
+
+/*
+* Dotted Border - A SASS mixin to help you increase spacing between the dots of border-style:dotted.
+*   $color	Color (hexadecimal, rgba...)	#8f8f8f
+    $orientation	horizontal or vertical	horizontal
+    $position	top, bottom, left, right	top
+    $spacing	CSS measure unit (5px, 1em etc.)	5px
+    $size	CSS measure unit (5px, 1em etc.)	1px
+*/
+@mixin dottedBorder($color: #8f8f8f, $orientation: horizontal, $position: top, $spacing: 5px, $size: 1px) {
+    background-position: $position;
+    @if $orientation == horizontal {
+        background-image: linear-gradient(to right, $color $size/$spacing * 100%, rgba(255,255,255,0) 0%);
+        background-size: $spacing $size;
+        background-repeat: repeat-x;
+    }
+    @else {
+        background-image: linear-gradient($color $size/$spacing * 100%, rgba(255,255,255,0) 0%);
+        background-size: $size $spacing;
+        background-repeat: repeat-y;
+    }
+    .ie9 & {
+        border-#{$position}:1px dotted $color;
+    }
+}
+
 
 
