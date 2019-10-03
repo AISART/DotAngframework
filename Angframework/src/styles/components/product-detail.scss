@@ -1,0 +1,18 @@
+@import '../variables';
+.product-detail {
+    .content-side-title {
+        color: $main-red;
+        font-weight: 700;
+        font-size: 4rem;
+    }
+    h3 {
+        color: $medium-gray;
+        font-size: 1.2rem;
+    }
+    .content-side-description {
+
+    }
+    .content-side-price {
+
+    }
+}

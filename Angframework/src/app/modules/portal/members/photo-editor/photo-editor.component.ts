@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Photo} from '../../../../models/photo';
 import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../../../environments/environment';
@@ -10,7 +10,7 @@ import {AlertifyService} from '../../../../services/alertify.service';
     selector: 'app-photo-editor',
     templateUrl: './photo-editor.component.html'
 })
-export class PhotoEditorComponent implements OnInit {
+export class PhotoEditorComponent implements OnInit, OnChanges {
     @Input() photos: Photo[];
     @Output() getMemberPhotoChange = new EventEmitter<string>();
 
@@ -22,6 +22,34 @@ export class PhotoEditorComponent implements OnInit {
     constructor(private authService: AuthService,
                 private userService: UserService,
                 private alertify: AlertifyService) {
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        const inputs = document.querySelectorAll( '.btn-uploader' );
+        Array.prototype.forEach.call( inputs, function( input ) {
+            const label	 = input.nextElementSibling, labelVal = label.innerHTML;
+
+            input.addEventListener('change', function(e) {
+                let fileName = '';
+                console.log('wat zit hierin dan', e);
+                console.log('this.files', this.files);
+                if (this.files && this.files.length > 1) {
+                    console.log('yo');
+                    fileName = (this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                    console.log('laat je deze zien?', fileName);
+                } else {
+                    fileName = e.target.value.split(/(?:\\)/).pop();
+                }
+
+                if (fileName) {
+                    console.log('filename', fileName);
+                    console.log('queryselector', label.querySelector('span'));
+                    label.querySelector('span').innerHTML = fileName;
+                } else {
+                    label.innerHTML = labelVal;
+                }
+            });
+        });
     }
 
     ngOnInit() {

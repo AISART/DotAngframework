@@ -16,12 +16,17 @@ import {ProductListComponent} from './product-list/product-list.component';
 import {ProductListResolver} from '../../resolvers/product-list.resolver';
 import {ProductDetailComponent} from './product-list/product-detail/product-detail.component';
 import {ProductDetailResolver} from '../../resolvers/product-detail.resolver';
+import {PortalHomeComponent} from './portal-home/portal-home.component';
 
 const ROUTES: Routes = [
     {
         path: '',
         component: PortalComponent,
         children: [
+            {
+                path: 'home',
+                component: PortalHomeComponent,
+            },
             {
                 path: 'members',
                 component: MemberListComponent,

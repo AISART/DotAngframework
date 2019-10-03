@@ -18,6 +18,7 @@ import {BsDatepickerModule, BsDropdownModule, ButtonsModule, ModalModule, Pagina
 import {SharedCoreModule} from '../../core/modules/shared-core.module';
 import {NavComponent} from './nav/nav.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
+import { PortalHomeComponent } from './portal-home/portal-home.component';
 
 @NgModule({
     imports: [
@@ -46,7 +47,8 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
         ProductListComponent,
         ProductCardComponent,
         ProductDetailComponent,
-        PhotoEditorComponent
+        PhotoEditorComponent,
+        PortalHomeComponent
     ],
     exports: [
         NavComponent

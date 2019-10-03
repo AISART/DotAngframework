@@ -17,6 +17,7 @@
 @import 'variables';
 // GENERAL
 @import 'overlay-spinner';
+@import 'components/dropzone-uploader';
 // COMPONENTS
 @import 'components/home-page';
 @import 'components/navbar';
@@ -27,6 +28,7 @@
 @import 'components/profile-page';
 @import 'components/photo-editor';
 @import 'components/products-overview';
+@import 'components/product-detail';
 @import 'components/radiobuttons';
 @import 'components/register';
 @import 'components/login';

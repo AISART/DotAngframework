@@ -1,86 +1,86 @@
 <div class="container mt-4">
+<!--	<div class="row">-->
+<!--		<div class="col-sm-4">-->
+<!--			<h1>{{user.knownAs}}'s Profile</h1>-->
+<!--		</div>-->
+<!--		<div class="col-sm-8">-->
+<!--			<div *ngIf="editForm.dirty" class="alert alert-info">-->
+<!--				<Strong>Information:</Strong>You have made changes, any unsaved changes will be lost!-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 	<div class="row">
-		<div class="col-sm-4">
-			<h1>{{user.knownAs}}'s Profile</h1>
-		</div>
-		<div class="col-sm-8">
-			<div *ngIf="editForm.dirty" class="alert alert-info">
-				<Strong>Information:</Strong>You have made changes, any unsaved changes will be lost!
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="profile col-4">
-			<div class="profile-top">
-				<div class="banner-profile mb-3">
-					<div class="profile-rounded">
-						<img class="card-img-top img-thumbnail"
-						     src="{{ photoUrl || '../../../assets/user.png' }}"
-						     alt="{{user.knownAs}}">
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div>
-					<h2>Location:</h2>
-					<strong>{{user.city}}, {{user?.country}}</strong>
-				</div>
-				<div>
-					<h2>Age:</h2>
-					<strong>{{user.age}}</strong>
-				</div>
-				<div>
-					<h2>Last Active:</h2>
-					<strong>{{user.lastActive | timeAgo }}</strong>
-				</div>
-				<div>
-					<h2>Member since:</h2>
-					<strong>{{ user.created | date:'longDate' }}</strong>
-				</div>
-			</div>
-			<div class="card-footer">
-				<button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes
-				</button>
-			</div>
-		</div>
-		<div class="col-sm-8">
+<!--		<div class="profile col-md-4 col-sm-12">-->
+<!--			<div class="profile-top">-->
+<!--				<div class="banner-profile mb-3">-->
+<!--					<div class="profile-rounded">-->
+<!--						<img class="card-img-top img-thumbnail"-->
+<!--						     src="{{ photoUrl || '../../../assets/user.png' }}"-->
+<!--						     alt="{{user.knownAs}}">-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="card-body">-->
+<!--				<div>-->
+<!--					<h2>Location:</h2>-->
+<!--					<strong>{{user.city}}, {{user?.country}}</strong>-->
+<!--				</div>-->
+<!--				<div>-->
+<!--					<h2>Age:</h2>-->
+<!--					<strong>{{user.age}}</strong>-->
+<!--				</div>-->
+<!--				<div>-->
+<!--					<h2>Last Active:</h2>-->
+<!--					<strong>{{user.lastActive | timeAgo }}</strong>-->
+<!--				</div>-->
+<!--				<div>-->
+<!--					<h2>Member since:</h2>-->
+<!--					<strong>{{ user.created | date:'longDate' }}</strong>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="card-footer">-->
+<!--				<button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes-->
+<!--				</button>-->
+<!--			</div>-->
+<!--		</div>-->
+		<div class="col-sm-12 col-md-8">
 			<div class="tab-panel">
 				<tabset>
-					<tab heading="Edit Profile {{user.knownAs}}">
-						<form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+<!--					<tab heading="Edit Profile {{user.knownAs}}">-->
+<!--						<form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">-->
 
-							<h4>Description</h4>
-							<mat-form-field>
-								<textarea matInput name="introduction" placeholder="Give yourself an introduction" [(ngModel)]="user.introduction"></textarea>
-							</mat-form-field>
+<!--							<h4>Description</h4>-->
+<!--							<mat-form-field>-->
+<!--								<textarea matInput name="introduction" placeholder="Give yourself an introduction" [(ngModel)]="user.introduction"></textarea>-->
+<!--							</mat-form-field>-->
 
-							<h4>Looking For</h4>
-							<mat-form-field>
-								<textarea matInput name="lookingFor" placeholder="What you looking for?" [(ngModel)]="user.lookingFor"></textarea>
-							</mat-form-field>
+<!--							<h4>Looking For</h4>-->
+<!--							<mat-form-field>-->
+<!--								<textarea matInput name="lookingFor" placeholder="What you looking for?" [(ngModel)]="user.lookingFor"></textarea>-->
+<!--							</mat-form-field>-->
 
-							<h4>Interests</h4>
-							<mat-form-field>
-								<textarea matInput name="interests" placeholder="What are youre interest" [(ngModel)]="user.interests"></textarea>
-							</mat-form-field>
+<!--							<h4>Interests</h4>-->
+<!--							<mat-form-field>-->
+<!--								<textarea matInput name="interests" placeholder="What are youre interest" [(ngModel)]="user.interests"></textarea>-->
+<!--							</mat-form-field>-->
 
-							<h4>Location Details:</h4>
-							<mat-form-field class="full-width-field">
-								<input matInput
-								       placeholder="City"
-								       name="city"
-								       required
-								       [(ngModel)]="user.city">
-							</mat-form-field>
-							<mat-form-field class="full-width-field">
-								<input matInput
-								       placeholder="Country"
-								       name="country"
-								       required
-								       [(ngModel)]="user.country">
-							</mat-form-field>
-						</form>
-					</tab>
+<!--							<h4>Location Details:</h4>-->
+<!--							<mat-form-field class="full-width-field">-->
+<!--								<input matInput-->
+<!--								       placeholder="City"-->
+<!--								       name="city"-->
+<!--								       required-->
+<!--								       [(ngModel)]="user.city">-->
+<!--							</mat-form-field>-->
+<!--							<mat-form-field class="full-width-field">-->
+<!--								<input matInput-->
+<!--								       placeholder="Country"-->
+<!--								       name="country"-->
+<!--								       required-->
+<!--								       [(ngModel)]="user.country">-->
+<!--							</mat-form-field>-->
+<!--						</form>-->
+<!--					</tab>-->
 					<tab heading="Edit Photos">
 						<app-photo-editor [photos]="user.photos"
 						                  (getMemberPhotoChange)="updateMainPhoto($event)"></app-photo-editor>

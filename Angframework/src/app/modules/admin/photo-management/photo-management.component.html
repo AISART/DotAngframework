@@ -5,20 +5,28 @@
 				<h4 class="title">Photo manager</h4>
 			</div>
 			<div class="content">
-				<div *ngFor="let photo of photos" class="col-sm-2">
-					<div *ngIf="photos.length else noPhotos">
-						<img src="{{photo.url}}" alt="{{photo.username}}" class="img-thumbnail p-1">
+				<div *ngIf="photos.length else noPhotos">
+					<div *ngFor="let photo of photos" class="col-sm-2">
+							<img src="{{photo.url}}" alt="{{photo.username}}" class="img-thumbnail p-1">
 
-						<div class="text-center">
-							<app-submit-button (click)="ApprovePhoto(photo.id)" [Text]="'Approve'"></app-submit-button>
-							<app-submit-button (click)="RejectPhoto(photo.id)" [Text]="'Reject'"></app-submit-button>
+							<div class="text-center">
+								<div class="row">
+									<div class="col-md-6">
+										<app-submit-button (click)="ApprovePhoto(photo.id)" [Text]="'Approve'"></app-submit-button>
+									</div>
+									<div class="col-md-6">
+										<app-submit-button (click)="RejectPhoto(photo.id)" [Text]="'Reject'"></app-submit-button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<ng-template #noPhotos>
-						<i class="fa fa-check"></i>
-						there are no photo's to check
-					</ng-template>
-				</div>
+				<ng-template #noPhotos>
+						<div class="d-flex justify-content-center align-items-center flex-column w-100 h-100">
+							<i class="fa fa-eye-slash" style="font-size: 15rem"></i>
+							<h1>There are no photo's for approval</h1>
+						</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>

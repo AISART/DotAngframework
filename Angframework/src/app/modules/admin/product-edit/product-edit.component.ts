@@ -73,15 +73,14 @@ export class ProductEditComponent implements OnInit {
     }
 
     async Submit() {
+        const form = await this.prepareFormData();
 
-            const form = await this.prepareFormData();
-
-            this.http.patch(this.productService.baseUrl + 'products/' + this.Id, form).subscribe(() => {
-                this.alertify.success('Product updated');
-                this.router.navigate(['/admin/product-management']);
-            }, (error) => {
-                console.log('error', error);
-            });
+        this.http.patch(this.productService.baseUrl + 'products/' + this.Id, form).subscribe(() => {
+            this.alertify.success('Product updated');
+            this.router.navigate(['/admin/product-management']);
+        }, (error) => {
+            console.log('error', error);
+        });
     }
 
 }
