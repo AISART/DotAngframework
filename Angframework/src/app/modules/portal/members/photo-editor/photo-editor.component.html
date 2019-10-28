@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-sm-2 photos img-wrapper" *ngFor="let photo of photos">
+	<div class="col-sm-4 photos img-wrapper" *ngFor="let photo of photos">
 		<img src="{{photo.url}}"
 		     [ngClass]="!photo.isApproved && 'not-approved'"
 		     class="img-thumbnail p-1"
@@ -26,62 +26,88 @@
 	</div>
 </div>
 
-<div class="row mt-3">
-	<div class="col-md-3">
-		<h3>Add photos</h3>
-		<div ng2FileDrop
-		     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-		     (fileOver)="fileOverBase($event)"
-		     [uploader]="uploader"
-		     class="card bg-faded p-3 text-center mb-3 my-drop-zone">
-			<i class="fa fa-upload fa-3x"></i>
-			Drop photos here
-		</div>
-		Multiple
-		<input type="file" ng2FileSelect [uploader]="uploader" multiple/><br/>
-		Single
-		<input type="file" ng2FileSelect [uploader]="uploader"/>
-	</div>
-	<div class="col-md-9" style="margin-bottom: 40px">
-		<h3>Upload queue</h3>
-		<p>Queue length: {{ uploader?.queue?.length }}</p>
-		<table class="table">
-			<thead>
-			<tr>
-				<th width="50%">Name</th>
-				<th>Size</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr *ngFor="let item of uploader.queue">
-				<td><strong>{{ item?.file?.name }}</strong></td>
-				<td *ngIf="uploader.options.isHTML5" nowrap>
-					{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB
-				</td>
-			</tr>
-			</tbody>
-		</table>
-		<div>
-			<div>
-				Queue progress:
-				<div class="progress mb-4">
-					<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+<div class="dropzone-container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div ng2FileDrop
+				     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+				     (fileOver)="fileOverBase($event)"
+				     [uploader]="uploader"
+				     class="text-center drag-drop-container my-drop-zone">
+					<div class="d-flex flex-column">
+						<div class="w-100 mb-3 dropzone-left">
+							<i class="fa fa-upload fa-5x"></i>
+							<h5>Drop youre photo(s) here</h5>
+							<div class="dropzone-left-information">
+								* You can select photos ( or multiple when you hold CONTROL key ) from your computer and drag them here.
+							</div>
+						</div>
+						<div class="w-100 d-flex justify-content-center align-items-center flex-column dropzone-right">
+							<h5>Or choose a single file</h5>
+							<input type="file"
+							       ng2FileSelect
+							       [uploader]="uploader"
+							       name="file2"
+							       id="file2"
+							       class="btn-uploader single-files"/>
+							<label for="file2">
+								<i class="fa fa-cloud-upload"></i>
+								<span>Single file</span>
+							</label>
+					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-success btn-s"
-			        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-				<span class="fa fa-upload"></span> Upload
-			</button>
-			<button type="button" class="btn btn-warning btn-s"
-			        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-				<span class="fa fa-ban"></span> Cancel
-			</button>
-			<button type="button" class="btn btn-danger btn-s"
-			        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-				<span class="fa fa-trash"></span> Remove
-			</button>
+
 		</div>
-
 	</div>
+</div>
 
+<div class="row progress-containe">
+	<ng-container *ngIf="!uploader?.queue?.length; else upload">
+		<p>There are {{ uploader?.queue?.length }} files ready to upload!</p>
+	</ng-container>
+	<ng-template #upload>
+	<div class="w-100 d-flex justify-content-center align-items-center flex-column">
+		<div class="progress-left">
+			<circle-progress [percent]="uploader.progress"></circle-progress>
+		</div>
+		<div class="progress-right">
+			<h3>Upload queue</h3>
+				<p>There are {{ uploader?.queue?.length }} files ready to upload!</p>
+				<ul>
+					<li class="row"></li>
+					<li *ngFor="let item of uploader.queue">
+						<div class="row">
+							<div class="col-sm-2">
+								file
+							</div>
+							<div class="col-sm-5 text-break">
+								<h4><strong>{{ item?.file?.name }}</strong></h4>
+							</div>
+							<div class="col-sm-3">
+								<p *ngIf="uploader.options.isHTML5" nowrap>
+									{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB
+								</p>
+							</div>
+							<div class="col-sm-2">
+								x
+							</div>
+						</div>
+					</li>
+				</ul>
+				<button type="button" class="btn btn-success btn-s"
+				        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+					<span class="fa fa-upload"></span> Upload
+				</button>
+				<button type="button" class="btn btn-warning btn-s"
+				        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+					<span class="fa fa-ban"></span> Cancel
+				</button>
+				<button type="button" class="btn btn-danger btn-s"
+				        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+					<span class="fa fa-trash"></span> Remove
+				</button>
+		</div>
+	</div>
+	</ng-template>
 </div>

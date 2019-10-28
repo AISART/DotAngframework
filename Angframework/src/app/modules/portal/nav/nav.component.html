@@ -170,8 +170,8 @@
 		<div id="responsive-nav">
 			<!-- category nav -->
 			<div class="category-nav">
-				<span class="category-header">Categories <i class="fa fa-list"></i></span>
-				<ul class="category-list">
+				<span class="category-header" #toggleButton (click)="toggleMenu()">Categories <i class="fa fa-list"></i></span>
+				<ul class="category-list menu" *ngIf="router.url.includes('home') || isMenuOpen" #menu>
 					<li class="dropdown side-dropdown" dropdown>
 						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" dropdownToggle>Women’s Clothing</a>
 						<div class="custom-menu" *dropdownMenu>
@@ -371,8 +371,8 @@
 				<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 
 				<ul class="menu-list">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Shop</a></li>
+					<li><a [routerLink]="['/home']">Home</a></li>
+					<li><a class="nav-link" [routerLink]="['/members']">Matches</a></li>
 					<li class="dropdown mega-dropdown" dropdown>
 						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" dropdownToggle>Women</a>
 						<div class="custom-menu" *dropdownMenu>
@@ -533,23 +533,3 @@
 	<!-- /container -->
 </div>
 <!-- /NAVIGATION -->
-
-<!-- HOME -->
-<div id="home">
-	<!-- container -->
-	<div class="container">
-		<!-- home wrap -->
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-9">
-				<owl-carousel-o [options]="customOptions">
-					<ng-template carouselSlide><img src="../../../../assets/images/example_product.png" alt=""></ng-template>
-					<ng-template carouselSlide><img src="../../../../assets/images/example_product.png" alt=""></ng-template>
-					<ng-template carouselSlide><img src="../../../../assets/images/example_product.png" alt=""></ng-template>
-				</owl-carousel-o>
-			</div>
-		</div>
-	</div>
-	<!-- /container -->
-</div>
-<!-- /HOME -->

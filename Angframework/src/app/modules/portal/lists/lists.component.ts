@@ -4,7 +4,7 @@ import {PaginatedResult, Pagination} from '../../../models/pagination';
 import {AuthService} from '../../../services/auth.service';
 import {UserService} from '../../../services/user.service';
 import {ActivatedRoute} from '@angular/router';
-import {AlertifyService} from '../../../services/alertify.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-lists',
@@ -19,7 +19,7 @@ export class ListsComponent implements OnInit {
     constructor(private authService: AuthService,
                 private userService: UserService,
                 private route: ActivatedRoute,
-                private alertify: AlertifyService) {
+                private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -41,7 +41,7 @@ export class ListsComponent implements OnInit {
                 this.users = res.result;
                 this.pagination = res.pagination;
             }, error => {
-                this.alertify.error(error);
+                this.toastr.error(error);
             });
     }
 

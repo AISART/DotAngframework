@@ -1,8 +1,8 @@
-import { AlertifyService } from './../services/alertify.service';
 import { AuthService } from './../services/auth.service';
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
 import decode from 'jwt-decode';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,7 @@ import decode from 'jwt-decode';
 export class AdminGuard implements CanActivate {
     constructor(private authService: AuthService,
                 private router: Router,
-                private alertify: AlertifyService) {}
+                private toastr: ToastrService) {}
 
     canActivate(next: ActivatedRouteSnapshot): | boolean {
         const expectedRole = next.firstChild.data['expectedRole'] as Array<string>;
@@ -23,8 +23,8 @@ export class AdminGuard implements CanActivate {
                 const tokenPayload = decode(token);
 
                 if (!this.authService.loggedIn() || !expectedRole.some((expected) => tokenPayload.role.includes(expected))) {
-                    console.log('hii')
                     this.router.navigate(['login']);
+                    this.toastr.success('logged in');
                     return false;
                 }
                 return true;

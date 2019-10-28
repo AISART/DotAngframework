@@ -10,9 +10,11 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {HasRoleDirective} from '../../directives/has-role.directive';
 import {TruncatePipe} from '../../libs/pipes/truncate.pipe';
+import {ClickOutsideDirective} from '../../directives/click-outside.directive';
 
 const components = [
     HasRoleDirective,
+    ClickOutsideDirective,
     TruncatePipe
 ];
 

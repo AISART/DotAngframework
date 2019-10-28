@@ -359,30 +359,28 @@ textarea.input {
 }
 
 #navigation {
-    background-color: #30323a
+    background-color: $main-dark-gray;
 }
 
 #navigation .container {
     position: relative
 }
-
 .category-nav {
     float: left;
-    width: 270px
-}
+    width: 270px;
 
-.category-nav .category-header {
-    padding: 15px;
-    display: block;
-    text-transform: uppercase;
-    background: #f8694a;
-    color: #fff;
-    font-weight: 700
-}
-
-.category-nav .category-header > i {
-    float: right;
-    line-height: 20px
+    .category-header {
+        padding: 15px;
+        display: block;
+        text-transform: uppercase;
+        background: $main-orange;
+        color: #fff;
+        font-weight: 700;
+        i {
+            float: right;
+            line-height: 20px
+        }
+    }
 }
 
 .category-nav .category-list {
@@ -395,22 +393,6 @@ textarea.input {
     z-index: 50;
     -webkit-transition: .3s all;
     transition: .3s all
-}
-
-.category-nav.show-on-click .category-list {
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform: translate(0px, 15px);
-    -ms-transform: translate(0px, 15px);
-    transform: translate(0px, 15px)
-}
-
-.category-nav.show-on-click .category-list.open {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: translate(0px, 0px);
-    -ms-transform: translate(0px, 0px);
-    transform: translate(0px, 0px)
 }
 
 .category-nav .category-list > li + li {
@@ -1635,10 +1617,6 @@ textarea.input {
 	03 -> NAVIGATION
 ===========================================================*/
 
-#navigation {
-    background-color: #30323A;
-}
-
 #navigation .container {
     position: relative;
 }
@@ -1650,15 +1628,6 @@ textarea.input {
 .category-nav {
     float: left;
     width: 270px;
-}
-
-.category-nav .category-header {
-    padding: 15px;
-    display: block;
-    text-transform: uppercase;
-    background: #F8694A;
-    color: #FFF;
-    font-weight: 700;
 }
 
 .category-nav .category-header > i {
@@ -1757,6 +1726,8 @@ textarea.input {
         -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
         z-index: 100;
+        right: 0 !important;
+        left: 0 !important;
         top: 100%;
         min-width: 200px;
         opacity: 0;

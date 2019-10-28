@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../../../models/user';
 import {UserService} from '../../../../services/user.service';
-import {AlertifyService} from '../../../../services/alertify.service';
 import {ActivatedRoute} from '@angular/router';
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
 import {TabsetComponent} from 'ngx-bootstrap';
 import {AuthService} from '../../../../services/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-member-detail',
@@ -20,7 +20,7 @@ export class MemberDetailComponent implements OnInit {
 
     constructor(private usersService: UserService,
                 private authService: AuthService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private route: ActivatedRoute) {
     }
 
@@ -28,7 +28,7 @@ export class MemberDetailComponent implements OnInit {
         this.route.data.subscribe(data => {
             this.user = data['user'];
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
 
         this.route.queryParams.subscribe(params => {
@@ -69,9 +69,9 @@ export class MemberDetailComponent implements OnInit {
 
     SendLike(id: number) {
         this.usersService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-            this.alertify.success('You have like' + this.user.knownAs);
+            this.toastr.success('You have liked' + this.user.knownAs);
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 }

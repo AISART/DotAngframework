@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../../models/user';
 import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
-import {AlertifyService} from '../../../../services/alertify.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-member-card',
@@ -13,7 +13,7 @@ export class MemberCardComponent implements OnInit {
 
     constructor(private authService: AuthService,
                 private userService: UserService,
-                private alertify: AlertifyService) {
+                private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -21,9 +21,9 @@ export class MemberCardComponent implements OnInit {
 
     SendLike(id: number) {
         this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-            this.alertify.success('You have like' + this.user.knownAs);
+            this.toastr.success('You have liked ' + this.user.knownAs);
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 }

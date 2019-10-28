@@ -4,8 +4,8 @@ import {User} from '../../../models/user';
 import {StateService, Step} from '../../../services/state.service';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../../services/auth.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-register',
@@ -38,9 +38,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     constructor(protected cd: ChangeDetectorRef,
                 protected state: StateService<User>,
+                private toastr: ToastrService,
                 private authService: AuthService,
-                private alertify: AlertifyService,
                 private router: Router) {
+
         this.State = this.state.State;
         this.state.ActiveStep.subscribe(step => {
             this.ActiveStep = step;
@@ -76,9 +77,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
         const body = this.state.State;
 
         this.authService.register(body).subscribe(() => {
-            this.alertify.success('Registration success');
+            this.toastr.success('Registration success');
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         }, () => {
             this.authService.login(body).subscribe(() => {
                 this.router.navigate(['/member/edit']);

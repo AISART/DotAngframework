@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../../services/product.service';
 import {Product} from '../../../../models/product';
-import {AlertifyService} from '../../../../services/alertify.service';
-import {ActivatedRoute, ActivatedRouteSnapshot, Route, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-product-detail',
@@ -12,7 +12,7 @@ export class ProductDetailComponent implements OnInit {
     product: Product;
 
     constructor(private productService: ProductService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private route: ActivatedRoute) {
     }
 
@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
         this.route.data.subscribe(data => {
             this.product = data['product'];
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 

@@ -9,6 +9,7 @@
 @import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import '~ngx-toastr/toastr';
 // FUNCTIONS
 @import 'functions';
 // MIXINS
@@ -17,6 +18,7 @@
 @import 'variables';
 // GENERAL
 @import 'overlay-spinner';
+@import 'components/dropzone-uploader';
 // COMPONENTS
 @import 'components/home-page';
 @import 'components/navbar';
@@ -27,6 +29,7 @@
 @import 'components/profile-page';
 @import 'components/photo-editor';
 @import 'components/products-overview';
+@import 'components/product-detail';
 @import 'components/radiobuttons';
 @import 'components/register';
 @import 'components/login';

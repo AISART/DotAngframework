@@ -1,9 +1,9 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {AlertifyService} from '../../services/alertify.service';
 import {Router} from '@angular/router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import {ROUTES} from './admin-panel/admin-panel.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-admin-dashboard',
@@ -16,7 +16,7 @@ export class AdminDashboardComponent implements OnInit {
     photoUrl: string;
 
     constructor(private authService: AuthService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private router: Router) {
     }
 
@@ -82,7 +82,7 @@ export class AdminDashboardComponent implements OnInit {
         localStorage.removeItem('user');
         this.authService.decodedToken = null;
         this.authService.currentUser = null;
-        this.alertify.message('succesfully logged out');
+        this.toastr.success('succesfully logged out');
         this.router.navigate(['/home']);
     }
 }

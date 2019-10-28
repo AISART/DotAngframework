@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
     loginMode = false;
 
     constructor(private authService: AuthService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private router: Router) {
     }
 
@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.authService.login(this.model).subscribe(next => {
-            this.alertify.success('Logged in successfully');
+            this.toastr.success('Enjoy.', 'Login succes!');
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error, 'Something went wrong...');
         }, () => {
-            this.router.navigate(['/members']);
+            this.router.navigate(['/home']);
         });
     }
 
