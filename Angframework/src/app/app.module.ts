@@ -11,7 +11,6 @@ import {AppComponent} from './app.component';
 
 import {AuthService} from './services/auth.service';
 import {ErrorInterceptorProvider} from './services/error.interceptor';
-import {AlertifyService} from './services/alertify.service';
 import {UserService} from './services/user.service';
 import {MemberDetailResolver} from './resolvers/member-detail.resolver';
 import {MemberListResolver} from './resolvers/member-list.resolver';
@@ -21,6 +20,7 @@ import {ListResolver} from './resolvers/lists.resolver';
 import {MessagesResolver} from './resolvers/messages.resolver';
 import {ProductListResolver} from './resolvers/product-list.resolver';
 import {ProductDetailResolver} from './resolvers/product-detail.resolver';
+import {ToastrModule} from 'ngx-toastr';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -33,6 +33,16 @@ export function tokenGetter() {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            timeOut: 5000,
+            positionClass: 'toast-top-center',
+            easeTime: '300',
+            closeButton: false,
+            enableHtml: true,
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            preventDuplicates: true,
+        }),
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
@@ -49,7 +59,6 @@ export function tokenGetter() {
         HttpClient,
         AuthService,
         ErrorInterceptorProvider,
-        AlertifyService,
         AuthGuard,
         UserService,
         MemberDetailResolver,

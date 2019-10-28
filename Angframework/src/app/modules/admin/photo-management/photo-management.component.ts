@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../../../services/admin.service';
-import {AlertifyService} from '../../../services/alertify.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-photo-management',
@@ -10,7 +10,7 @@ export class PhotoManagementComponent implements OnInit {
     photos: any;
 
     constructor(private adminService: AdminService,
-                private alertify: AlertifyService) {
+                private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -21,7 +21,7 @@ export class PhotoManagementComponent implements OnInit {
         this.adminService.getPhotosForApproval().subscribe((photos) => {
             this.photos = photos;
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 
@@ -29,7 +29,7 @@ export class PhotoManagementComponent implements OnInit {
         this.adminService.approvePhoto(photoId).subscribe(() => {
             this.photos.splice(this.photos.findIndex(p => p.id === photoId), 1);
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 
@@ -37,7 +37,7 @@ export class PhotoManagementComponent implements OnInit {
         this.adminService.rejectPhoto(photoId).subscribe(() => {
             this.photos.splice(this.photos.findIndex(p => p.id === photoId), 1);
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 

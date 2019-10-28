@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ProductService} from '../../../services/product.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../../models/product';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-product-management',
@@ -22,7 +22,7 @@ export class ProductManagementComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private productService: ProductService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private router: Router,
                 private route: ActivatedRoute) {
     }
@@ -39,27 +39,25 @@ export class ProductManagementComponent implements OnInit {
         this.route.data.subscribe(data => {
             this.products = data['products'];
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error, 'Oeps...');
         });
     }
 
     deleteProduct(id: number) {
-        this.alertify.confirm('Are you sure you want to delete this product?', () => {
-            this.productService.DeleteProduct(id).subscribe(() => {
-                this.products.splice(this.products.findIndex(m => m.id === id), 1);
-                this.alertify.success('This product has been deleted');
-            }, error => {
-                this.alertify.error('Failed to the product');
-            });
+        this.productService.DeleteProduct(id).subscribe(() => {
+            this.products.splice(this.products.findIndex(m => m.id === id), 1);
+            this.toastr.success('This product has been deleted', 'Success!');
+        }, error => {
+            this.toastr.error('Failed to delete the product', 'Oeps...');
         });
     }
 
     async Finish() {
         const form = await this.prepareFormData();
-        console.log('form', form);
+
         this.productService.CreateProduct(form).subscribe(() => {
-            this.alertify.success('Product is added!');
-            this.router.navigate(['products']);
+            this.toastr.success('Product is added', 'Success!');
+            this.router.navigate(['/products']);
         });
     }
 

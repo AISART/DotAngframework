@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../../models/user';
 import {UserService} from '../../../../services/user.service';
-import {AlertifyService} from '../../../../services/alertify.service';
 import {ActivatedRoute} from '@angular/router';
 import {PaginatedResult, Pagination} from '../../../../models/pagination';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-member-list',
@@ -17,7 +17,7 @@ export class MemberListComponent implements OnInit {
     pagination: Pagination;
 
     constructor(private userService: UserService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private route: ActivatedRoute) {
     }
 
@@ -26,7 +26,7 @@ export class MemberListComponent implements OnInit {
             this.users = data['users'].result;
             this.pagination = data['users'].pagination;
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
 
         this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
@@ -53,7 +53,7 @@ export class MemberListComponent implements OnInit {
                 this.users = res.result;
                 this.pagination = res.pagination;
             }, error => {
-                this.alertify.error(error);
+                this.toastr.error(error);
             });
     }
 }

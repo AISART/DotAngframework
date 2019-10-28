@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../../../models/product';
 import {ProductService} from '../../../services/product.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-product-edit',
@@ -16,7 +16,7 @@ export class ProductEditComponent implements OnInit {
     Id: string;
 
     constructor(private productService: ProductService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private route: ActivatedRoute,
                 private router: Router,
                 private fb: FormBuilder,
@@ -29,7 +29,7 @@ export class ProductEditComponent implements OnInit {
             this.product = data['products'];
             return this.product;
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
 
         this.Id = this.route.snapshot.params.id;
@@ -76,7 +76,7 @@ export class ProductEditComponent implements OnInit {
         const form = await this.prepareFormData();
 
         this.http.patch(this.productService.baseUrl + 'products/' + this.Id, form).subscribe(() => {
-            this.alertify.success('Product updated');
+            this.toastr.success('Product updated');
             this.router.navigate(['/admin/product-management']);
         }, (error) => {
             console.log('error', error);

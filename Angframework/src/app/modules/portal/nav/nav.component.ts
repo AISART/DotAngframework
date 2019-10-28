@@ -1,7 +1,7 @@
-import { AlertifyService } from '../../../services/alertify.service';
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
     isMenuOpen = false;
 
     constructor(public authService: AuthService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 public router: Router,
                 private renderer: Renderer2) {
         /**
@@ -48,9 +48,9 @@ export class NavComponent implements OnInit {
 
     login() {
         this.authService.login(this.model).subscribe(next => {
-            this.alertify.success('Logged in successfully');
+            this.toastr.success('Logged in successfully');
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         }, () => {
             this.router.navigate(['/members']);
         });
@@ -66,7 +66,7 @@ export class NavComponent implements OnInit {
         localStorage.removeItem('user');
         this.authService.decodedToken = null;
         this.authService.currentUser = null;
-        this.alertify.message('succesfully logged out');
-        this.router.navigate(['/home']);
+        this.toastr.info('succesfully logged out');
+        this.router.navigate(['/authentication/login']);
     }
 }

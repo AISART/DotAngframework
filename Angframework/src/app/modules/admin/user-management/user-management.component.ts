@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {AdminService} from '../../../services/admin.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {RolesModalComponent} from '../roles-modal/roles-modal.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-user-management',
@@ -14,7 +14,7 @@ export class UserManagementComponent implements OnInit {
     bsModalRef: BsModalRef;
 
     constructor(private adminService: AdminService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private modalService: BsModalService) {
     }
 
@@ -26,7 +26,7 @@ export class UserManagementComponent implements OnInit {
         this.adminService.getUserWithRoles().subscribe((users: User[]) => {
             this.users = users;
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 
@@ -44,20 +44,18 @@ export class UserManagementComponent implements OnInit {
                 this.adminService.updateUserRoles(user, rolesToUpdate).subscribe(() => {
                     user.roles = [...rolesToUpdate.roleNames];
                 }, error => {
-                    this.alertify.error(error);
+                    this.toastr.error(error);
                 });
             }
         });
     }
 
     DeleteUser(id: number) {
-        this.alertify.confirm('Are you sure you want to delete this user?', () => {
-            this.adminService.deleteUser(id).subscribe(() => {
-                this.users.splice(this.users.findIndex(m => m.id === id), 1);
-                this.alertify.success('This user has been deleted');
-            }, error => {
-                this.alertify.error('Failed to the user');
-            });
+        this.adminService.deleteUser(id).subscribe(() => {
+            this.users.splice(this.users.findIndex(m => m.id === id), 1);
+            this.toastr.success('This user has been deleted');
+        }, error => {
+            this.toastr.error('Failed to the user');
         });
     }
 

@@ -1,30 +1,30 @@
-<!--<div class="row">-->
-<!--	<div class="col-sm-2 photos img-wrapper" *ngFor="let photo of photos">-->
-<!--		<img src="{{photo.url}}"-->
-<!--		     [ngClass]="!photo.isApproved && 'not-approved'"-->
-<!--		     class="img-thumbnail p-1"-->
-<!--		     alt="">-->
+<div class="row">
+	<div class="col-sm-4 photos img-wrapper" *ngFor="let photo of photos">
+		<img src="{{photo.url}}"
+		     [ngClass]="!photo.isApproved && 'not-approved'"
+		     class="img-thumbnail p-1"
+		     alt="">
 
-<!--		<div *ngIf="!photo.isApproved" class="text-center img-text">-->
-<!--			<span class="text-danger">Awaiting approval</span>-->
-<!--		</div>-->
+		<div *ngIf="!photo.isApproved" class="text-center img-text">
+			<span class="text-danger">Awaiting approval</span>
+		</div>
 
-<!--		<div class="text-center">-->
-<!--			<button (click)="setMainPhoto(photo)"-->
-<!--			        [disabled]="photo.isMain || !photo.isApproved"-->
-<!--			        [ngClass]="photo.isMain ? 'btn-success active' : 'btn-secondary'"-->
-<!--			        type="button"-->
-<!--			        class="btn btn-sm mr-1">Main-->
-<!--			</button>-->
-<!--			<button (click)="deletePhoto(photo.id)"-->
-<!--			        [disabled]="photo.isMain"-->
-<!--			        type="button"-->
-<!--			        class="btn btn-sm btn-danger">-->
-<!--				<i class="fa fa-trash-o"></i>-->
-<!--			</button>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</div>-->
+		<div class="text-center">
+			<button (click)="setMainPhoto(photo)"
+			        [disabled]="photo.isMain || !photo.isApproved"
+			        [ngClass]="photo.isMain ? 'btn-success active' : 'btn-secondary'"
+			        type="button"
+			        class="btn btn-sm mr-1">Main
+			</button>
+			<button (click)="deletePhoto(photo.id)"
+			        [disabled]="photo.isMain"
+			        type="button"
+			        class="btn btn-sm btn-danger">
+				<i class="fa fa-trash-o"></i>
+			</button>
+		</div>
+	</div>
+</div>
 
 <div class="dropzone-container">
 		<div class="row">
@@ -63,38 +63,16 @@
 </div>
 
 <div class="row progress-containe">
-	<div class="col-sm-12 col-md-6">
+	<ng-container *ngIf="!uploader?.queue?.length; else upload">
+		<p>There are {{ uploader?.queue?.length }} files ready to upload!</p>
+	</ng-container>
+	<ng-template #upload>
+	<div class="w-100 d-flex justify-content-center align-items-center flex-column">
 		<div class="progress-left">
-			Queue progress:
-
-			<div class="progress mb-4">
-				<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-			</div>
-
-			<!-- Progress bar 2 -->
-			<div class="progress mx-auto" data-value='25'>
-	            <span class="progress-left">
-		            <span class="progress-bar border-danger"></span>
-	            </span>
-				<span class="progress-right">
-					<span class="progress-bar border-danger"></span>
-	            </span>
-				<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-					<div class="h2 font-weight-bold">{{ uploader.progress }}<sup class="small">%</sup></div>
-				</div>
-			</div>
-			<!-- END -->
-
-
+			<circle-progress [percent]="uploader.progress"></circle-progress>
 		</div>
-	</div>
-	<div class="col-sm-12 col-md-6">
 		<div class="progress-right">
 			<h3>Upload queue</h3>
-			<ng-container *ngIf="!uploader?.queue?.length; else upload">
-				<p>There are {{ uploader?.queue?.length }} files ready to upload!</p>
-			</ng-container>
-			<ng-template #upload>
 				<p>There are {{ uploader?.queue?.length }} files ready to upload!</p>
 				<ul>
 					<li class="row"></li>
@@ -129,7 +107,7 @@
 				        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
 					<span class="fa fa-trash"></span> Remove
 				</button>
-			</ng-template>
 		</div>
 	</div>
+	</ng-template>
 </div>

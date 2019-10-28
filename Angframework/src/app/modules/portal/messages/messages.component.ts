@@ -4,7 +4,7 @@ import {PaginatedResult, Pagination} from '../../../models/pagination';
 import {UserService} from '../../../services/user.service';
 import {AuthService} from '../../../services/auth.service';
 import {ActivatedRoute} from '@angular/router';
-import {AlertifyService} from '../../../services/alertify.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-messages',
@@ -18,7 +18,7 @@ export class MessagesComponent implements OnInit {
     constructor(private userService: UserService,
                 private authService: AuthService,
                 private route: ActivatedRoute,
-                private alertify: AlertifyService) {
+                private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -37,18 +37,16 @@ export class MessagesComponent implements OnInit {
                 this.messages = res.result;
                 this.pagination = res.pagination;
         }, error => {
-                this.alertify.error(error);
+                this.toastr.error(error);
             });
     }
 
     deleteMessage(id: number) {
-        this.alertify.confirm('Are you sure you want to delete this message', () => {
-            this.userService.deleteMessage(id, this.authService.decodedToken.nameid).subscribe(() => {
-                this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
-                this.alertify.success('This messages has been deleted');
-            }, error => {
-                this.alertify.error('Failed to the message');
-            });
+        this.userService.deleteMessage(id, this.authService.decodedToken.nameid).subscribe(() => {
+            this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
+            this.toastr.success('This messages has been deleted');
+        }, error => {
+            this.toastr.error('Failed to the message');
         });
     }
 

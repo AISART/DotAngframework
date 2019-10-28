@@ -1,8 +1,8 @@
 import {Component, HostListener, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
-import {AlertifyService} from '../../../services/alertify.service';
 import {Router} from '@angular/router';
 import PerfectScrollbar from 'perfect-scrollbar';
+import {ToastrService} from 'ngx-toastr';
 
 declare interface RouteInfo {
     path: string;
@@ -27,7 +27,7 @@ export class AdminPanelComponent implements OnInit, AfterViewInit {
     photoUrl: string;
 
     constructor(private authService: AuthService,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private router: Router) {
     }
 
@@ -93,8 +93,8 @@ export class AdminPanelComponent implements OnInit, AfterViewInit {
         localStorage.removeItem('user');
         this.authService.decodedToken = null;
         this.authService.currentUser = null;
-        this.alertify.message('succesfully logged out');
-        this.router.navigate(['/home']);
+        this.toastr.success('Succesfully logged out');
+        this.router.navigate(['/authentication/login']);
     }
 
 }

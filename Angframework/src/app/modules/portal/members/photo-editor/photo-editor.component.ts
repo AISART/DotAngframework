@@ -4,7 +4,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../../../environments/environment';
 import {AuthService} from '../../../../services/auth.service';
 import {UserService} from '../../../../services/user.service';
-import {AlertifyService} from '../../../../services/alertify.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-photo-editor',
@@ -21,7 +21,7 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
 
     constructor(private authService: AuthService,
                 private userService: UserService,
-                private alertify: AlertifyService) {
+                private toastr: ToastrService) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -31,19 +31,14 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
 
             input.addEventListener('change', function(e) {
                 let fileName = '';
-                console.log('wat zit hierin dan', e);
-                console.log('this.files', this.files);
+
                 if (this.files && this.files.length > 1) {
-                    console.log('yo');
                     fileName = (this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                    console.log('laat je deze zien?', fileName);
                 } else {
                     fileName = e.target.value.split(/(?:\\)/).pop();
                 }
 
                 if (fileName) {
-                    console.log('filename', fileName);
-                    console.log('queryselector', label.querySelector('span'));
                     label.querySelector('span').innerHTML = fileName;
                 } else {
                     label.innerHTML = labelVal;
@@ -110,20 +105,18 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
             this.authService.currentUser.photoUrl = photo.url;
             localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
 
-            this.alertify.success('New main photo!');
+            this.toastr.success('New main photo!');
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 
     deletePhoto(id: number) {
-        this.alertify.confirm('Are you sure you want to delete this photo?', () => {
-            this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
-                this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
-                this.alertify.success('This photo has been deleted');
-            }, error => {
-                this.alertify.error(error);
-            });
+        this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
+            this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+            this.toastr.success('This photo has been deleted');
+        }, error => {
+            this.toastr.error(error);
         });
     }
 }

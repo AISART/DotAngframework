@@ -23,3 +23,26 @@
         }
     }
 }
+
+.profile-image-head {
+    height: 315px;
+    overflow: hidden;
+    position: relative;
+
+    .profile-picture {
+        position: absolute;
+        bottom: 1rem;
+        left: 1.55rem;
+        border: 4px solid #FFF;
+
+        img {
+            max-height: 175px;
+            max-width: 175px;
+        }
+    }
+}
+
+.navigation-sub-menu {
+    background-color: $main-dark-gray;
+    width: 100%;
+}

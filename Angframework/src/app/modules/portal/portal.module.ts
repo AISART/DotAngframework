@@ -19,12 +19,31 @@ import {SharedCoreModule} from '../../core/modules/shared-core.module';
 import {NavComponent} from './nav/nav.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import { PortalHomeComponent } from './portal-home/portal-home.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
     imports: [
         PortalRoutingModule,
         SharedModule,
         SharedCoreModule,
+        NgCircleProgressModule.forRoot({
+            'backgroundColor': '#F5F5F5',
+            'radius': 75,
+            'space': 6,
+            'maxPercent': 200,
+            'unitsColor': '#d30000',
+            'outerStrokeWidth': 5,
+            'outerStrokeColor': '#d30000',
+            'outerStrokeLinecap': 'square',
+            'innerStrokeColor': '#d30000',
+            'innerStrokeWidth': 19,
+            'titleColor': '#d30000',
+            'subtitleColor': '#d30000',
+            'showSubtitle': false,
+            'titleFontSize': '50',
+            'showInnerStroke': false,
+            'responsive': false,
+        }),
         TabsModule.forRoot(),
         ModalModule.forRoot(),
         BsDatepickerModule.forRoot(),

@@ -4,7 +4,8 @@
 		<div class="login container d-flex justify-content-center align-items-center">
 			<div class="login-container col-6">
 				<div class="test" *ngIf="!loginMode; else forgotForm">
-				<h2 class="text-primary">Welcome! Please enter your account details </h2>
+					<h2 class="text-primary">Welcome!</h2>
+					<h4>Please enter your account details</h4>
 				<hr>
 					<button class="btn btn-default position-absolute register-close" type="button" [routerLink]="['/authentication']">
 						<i class="fa fa-times"></i>

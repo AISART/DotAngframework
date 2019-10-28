@@ -1,10 +1,10 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../../../models/user';
-import {AlertifyService} from '../../../../services/alertify.service';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../../services/user.service';
 import {AuthService} from '../../../../services/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-members-edit',
@@ -23,7 +23,7 @@ export class MembersEditComponent implements OnInit {
     }
 
     constructor(private route: ActivatedRoute,
-                private alertify: AlertifyService,
+                private toastr: ToastrService,
                 private userService: UserService,
                 private authService: AuthService) {
     }
@@ -38,10 +38,10 @@ export class MembersEditComponent implements OnInit {
 
     updateUser() {
         this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
-            this.alertify.success('Profile updated succesfully');
+            this.toastr.success('Profile updated');
             this.editForm.reset(this.user);
         }, error => {
-            this.alertify.error(error);
+            this.toastr.error(error);
         });
     }
 
