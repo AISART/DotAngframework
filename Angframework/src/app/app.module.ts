@@ -35,7 +35,7 @@ export function tokenGetter() {
         BrowserAnimationsModule,
         ToastrModule.forRoot({
             timeOut: 5000,
-            positionClass: 'toast-top-center',
+            positionClass: 'toast-bottom-center',
             easeTime: '300',
             closeButton: false,
             enableHtml: true,
