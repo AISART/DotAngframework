@@ -20,6 +20,7 @@ import {NavComponent} from './nav/nav.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import { PortalHomeComponent } from './portal-home/portal-home.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     imports: [
@@ -67,7 +68,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
         ProductCardComponent,
         ProductDetailComponent,
         PhotoEditorComponent,
-        PortalHomeComponent
+        PortalHomeComponent,
+        FooterComponent
     ],
     exports: [
         NavComponent

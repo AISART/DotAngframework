@@ -37,6 +37,15 @@
 
 *{font-family: 'Muli', sans-serif;}
 
+section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#section-red {
+    background-color: $main-dark-gray;
+    color: #FFFF;
+}
+
 .card-img-wrapper {
     overflow: hidden;
     position: relative;

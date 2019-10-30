@@ -2,3 +2,6 @@
 	<app-nav></app-nav>
 </header>
 <router-outlet></router-outlet>
+<footer *ngIf="loggedIn()">
+	<app-footer></app-footer>
+</footer>
